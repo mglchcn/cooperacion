@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -22,18 +23,30 @@
         
         .fade-in { animation: fadeIn 0.3s ease-in-out; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* Mobile Utilities */
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
     </style>
 </head>
 <body class="h-screen flex overflow-hidden text-gray-800">
 
+    <!-- Mobile Sidebar Backdrop -->
+    <div id="sidebar-backdrop" class="fixed inset-0 bg-slate-900/50 z-40 hidden md:hidden" onclick="toggleSidebar()"></div>
+
     <!-- Sidebar -->
-    <aside class="w-72 bg-slate-900 text-white flex flex-col h-full shadow-xl z-10 transition-all duration-300">
+    <aside id="sidebar" class="fixed md:relative w-72 bg-slate-900 text-white flex flex-col h-full shadow-xl z-50 transform -translate-x-full md:translate-x-0 transition-transform duration-300">
         <div class="p-6 border-b border-slate-700">
-            <h1 class="text-xl font-bold flex items-center gap-2">
-                <i class="fas fa-globe-americas text-blue-400"></i>
-                Gestor Interagencial
-            </h1>
-            <p class="text-xs text-slate-400 mt-1">Vinculable a Google Sheets</p>
+            <div class="flex justify-between items-center mb-1">
+                <h1 class="text-xl font-bold flex items-center gap-2">
+                    <i class="fas fa-globe-americas text-blue-400"></i>
+                    Gestor Interagencial
+                </h1>
+                <button onclick="toggleSidebar()" class="md:hidden text-slate-400 hover:text-white">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+            <p class="text-xs text-slate-400">Vinculable a Google Sheets</p>
         </div>
         
         <div class="p-4">
@@ -52,33 +65,38 @@
     </aside>
 
     <!-- Main Content -->
-    <main class="flex-1 flex flex-col h-full overflow-hidden bg-gray-50 relative">
+    <main class="flex-1 flex flex-col h-full overflow-hidden bg-gray-50 relative w-full">
         
         <!-- Header -->
-        <header class="bg-white shadow-sm px-8 py-5 flex justify-between items-center z-10">
-            <div>
-                <h2 id="current-org-title" class="text-2xl font-bold text-gray-800">Cargando...</h2>
-                <p id="current-org-subtitle" class="text-sm text-gray-500 mt-1">Selecciona o crea un organismo</p>
+        <header class="bg-white shadow-sm px-4 md:px-8 py-4 md:py-5 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 z-10">
+            <div class="flex items-center gap-3">
+                <button onclick="toggleSidebar()" class="md:hidden text-gray-600 hover:text-blue-600 focus:outline-none">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+                <div>
+                    <h2 id="current-org-title" class="text-xl md:text-2xl font-bold text-gray-800">Cargando...</h2>
+                    <p id="current-org-subtitle" class="text-xs md:text-sm text-gray-500 mt-1">Selecciona o crea un organismo</p>
+                </div>
             </div>
-            <div class="flex gap-3">
-                <button onclick="exportToCSV()" class="bg-emerald-50 text-emerald-700 hover:bg-emerald-100 border border-emerald-200 py-2 px-4 rounded-lg flex items-center gap-2 transition-colors text-sm font-medium shadow-sm">
-                    <i class="fas fa-file-excel"></i> Exportar a Sheets (CSV)
+            <div class="flex gap-3 w-full sm:w-auto">
+                <button onclick="exportToCSV()" class="w-full sm:w-auto bg-emerald-50 text-emerald-700 hover:bg-emerald-100 border border-emerald-200 py-2 px-4 rounded-lg flex items-center justify-center gap-2 transition-colors text-sm font-medium shadow-sm">
+                    <i class="fas fa-file-excel"></i> <span class="hidden sm:inline">Exportar a Sheets (CSV)</span><span class="sm:hidden">Exportar CSV</span>
                 </button>
             </div>
         </header>
 
         <!-- Tabs -->
-        <div class="px-8 pt-4 bg-white border-b border-gray-200" id="tabs-container" style="display: none;">
-            <ul class="flex space-x-8 text-sm" id="tab-list">
-                <li onclick="switchTab('general')" id="tab-general" class="pb-3 cursor-pointer tab-active">Información General</li>
-                <li onclick="switchTab('outcomes')" id="tab-outcomes" class="pb-3 cursor-pointer tab-inactive">Objetivos (Outcomes)</li>
-                <li onclick="switchTab('activities')" id="tab-activities" class="pb-3 cursor-pointer tab-inactive">Actividades y Proyectos</li>
-                <li onclick="switchTab('entities')" id="tab-entities" class="pb-3 cursor-pointer tab-inactive">Entidades de Gobierno</li>
+        <div class="px-4 md:px-8 pt-4 bg-white border-b border-gray-200" id="tabs-container" style="display: none;">
+            <ul class="flex space-x-6 md:space-x-8 text-sm overflow-x-auto no-scrollbar" id="tab-list">
+                <li onclick="switchTab('general')" id="tab-general" class="pb-3 cursor-pointer tab-active whitespace-nowrap">Información General</li>
+                <li onclick="switchTab('outcomes')" id="tab-outcomes" class="pb-3 cursor-pointer tab-inactive whitespace-nowrap">Objetivos (Outcomes)</li>
+                <li onclick="switchTab('activities')" id="tab-activities" class="pb-3 cursor-pointer tab-inactive whitespace-nowrap">Actividades y Proyectos</li>
+                <li onclick="switchTab('entities')" id="tab-entities" class="pb-3 cursor-pointer tab-inactive whitespace-nowrap">Entidades de Gobierno</li>
             </ul>
         </div>
 
         <!-- Scrollable Content Area -->
-        <div class="flex-1 overflow-y-auto p-8" id="content-area">
+        <div class="flex-1 overflow-y-auto p-4 md:p-8" id="content-area">
             <!-- Empty State -->
             <div id="empty-state" class="h-full flex flex-col items-center justify-center text-gray-400">
                 <i class="fas fa-sitemap text-6xl mb-4 text-gray-300"></i>
@@ -129,19 +147,21 @@
                     <button onclick="openModal('modal-outcome')" class="bg-slate-800 hover:bg-slate-700 text-white text-sm py-2 px-4 rounded-lg flex items-center gap-2"><i class="fas fa-plus"></i> Añadir Objetivo</button>
                 </div>
                 <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
-                    <table class="w-full text-left border-collapse">
-                        <thead>
-                            <tr class="bg-gray-50 border-b text-sm text-gray-600">
-                                <th class="p-4 font-semibold w-32">ID</th>
-                                <th class="p-4 font-semibold">Descripción del Objetivo</th>
-                                <th class="p-4 font-semibold">Área de enfoque</th>
-                                <th class="p-4 font-semibold w-24">Acción</th>
-                            </tr>
-                        </thead>
-                        <tbody id="table-outcomes" class="text-sm divide-y">
-                            <!-- Injected by JS -->
-                        </tbody>
-                    </table>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left border-collapse min-w-[600px]">
+                            <thead>
+                                <tr class="bg-gray-50 border-b text-sm text-gray-600">
+                                    <th class="p-4 font-semibold w-32">ID</th>
+                                    <th class="p-4 font-semibold">Descripción del Objetivo</th>
+                                    <th class="p-4 font-semibold">Área de enfoque</th>
+                                    <th class="p-4 font-semibold w-24">Acción</th>
+                                </tr>
+                            </thead>
+                            <tbody id="table-outcomes" class="text-sm divide-y">
+                                <!-- Injected by JS -->
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
 
@@ -178,19 +198,21 @@
                     <button onclick="openModal('modal-entity')" class="bg-slate-800 hover:bg-slate-700 text-white text-sm py-2 px-4 rounded-lg flex items-center gap-2"><i class="fas fa-plus"></i> Añadir Entidad</button>
                 </div>
                 <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
-                    <table class="w-full text-left border-collapse">
-                        <thead>
-                            <tr class="bg-gray-50 border-b text-sm text-gray-600">
-                                <th class="p-4 font-semibold">Entidad</th>
-                                <th class="p-4 font-semibold">Nivel</th>
-                                <th class="p-4 font-semibold">Áreas de Colaboración</th>
-                                <th class="p-4 font-semibold w-24">Acción</th>
-                            </tr>
-                        </thead>
-                        <tbody id="table-entities" class="text-sm divide-y">
-                            <!-- Injected by JS -->
-                        </tbody>
-                    </table>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left border-collapse min-w-[600px]">
+                            <thead>
+                                <tr class="bg-gray-50 border-b text-sm text-gray-600">
+                                    <th class="p-4 font-semibold">Entidad</th>
+                                    <th class="p-4 font-semibold">Nivel</th>
+                                    <th class="p-4 font-semibold">Áreas de Colaboración</th>
+                                    <th class="p-4 font-semibold w-24">Acción</th>
+                                </tr>
+                            </thead>
+                            <tbody id="table-entities" class="text-sm divide-y">
+                                <!-- Injected by JS -->
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
 
@@ -291,6 +313,21 @@
         let orgs = [];
         let currentOrgId = null;
         let currentTab = 'general';
+        let isSidebarOpen = false;
+
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const backdrop = document.getElementById('sidebar-backdrop');
+            isSidebarOpen = !isSidebarOpen;
+            
+            if(isSidebarOpen) {
+                sidebar.classList.remove('-translate-x-full');
+                backdrop.classList.remove('hidden');
+            } else {
+                sidebar.classList.add('-translate-x-full');
+                backdrop.classList.add('hidden');
+            }
+        }
 
         function initApp() {
             // Load from localStorage if exists, otherwise use initialData
@@ -331,6 +368,11 @@
             currentOrgId = id;
             renderSidebar();
             
+            // Auto-close sidebar on mobile
+            if(window.innerWidth < 768 && isSidebarOpen) {
+                toggleSidebar();
+            }
+            
             document.getElementById('empty-state').style.display = 'none';
             document.getElementById('tabs-container').style.display = 'block';
             
@@ -360,9 +402,9 @@
                 // Style Tabs
                 const tabEl = document.getElementById(`tab-${t}`);
                 if(t === tabId) {
-                    tabEl.className = "pb-3 cursor-pointer tab-active";
+                    tabEl.className = "pb-3 cursor-pointer tab-active whitespace-nowrap";
                 } else {
-                    tabEl.className = "pb-3 cursor-pointer tab-inactive";
+                    tabEl.className = "pb-3 cursor-pointer tab-inactive whitespace-nowrap";
                 }
                 
                 // Show/Hide Content
@@ -561,4 +603,3 @@
     </script>
 </body>
 </html>
-```
