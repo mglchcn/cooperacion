@@ -1,0 +1,565 @@
+```html
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CMS - Gestión de Organismos y Proyectos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; background-color: #f3f4f6; }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+        
+        .tab-active { border-bottom: 2px solid #2563eb; color: #2563eb; font-weight: 600; }
+        .tab-inactive { color: #64748b; }
+        .tab-inactive:hover { color: #334155; border-bottom: 2px solid #cbd5e1; }
+        
+        .fade-in { animation: fadeIn 0.3s ease-in-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body class="h-screen flex overflow-hidden text-gray-800">
+
+    <!-- Sidebar -->
+    <aside class="w-72 bg-slate-900 text-white flex flex-col h-full shadow-xl z-10 transition-all duration-300">
+        <div class="p-6 border-b border-slate-700">
+            <h1 class="text-xl font-bold flex items-center gap-2">
+                <i class="fas fa-globe-americas text-blue-400"></i>
+                Gestor Interagencial
+            </h1>
+            <p class="text-xs text-slate-400 mt-1">Vinculable a Google Sheets</p>
+        </div>
+        
+        <div class="p-4">
+            <button onclick="createNewOrg()" class="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-lg flex items-center justify-center gap-2 transition-colors text-sm font-medium shadow-md">
+                <i class="fas fa-plus"></i> Nuevo Organismo
+            </button>
+        </div>
+
+        <nav class="flex-1 overflow-y-auto p-4 space-y-2" id="org-list">
+            <!-- Org list will be injected here -->
+        </nav>
+
+        <div class="p-4 border-t border-slate-700 text-xs text-slate-500 text-center">
+            CMS v1.0 • Memoria Local
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 flex flex-col h-full overflow-hidden bg-gray-50 relative">
+        
+        <!-- Header -->
+        <header class="bg-white shadow-sm px-8 py-5 flex justify-between items-center z-10">
+            <div>
+                <h2 id="current-org-title" class="text-2xl font-bold text-gray-800">Cargando...</h2>
+                <p id="current-org-subtitle" class="text-sm text-gray-500 mt-1">Selecciona o crea un organismo</p>
+            </div>
+            <div class="flex gap-3">
+                <button onclick="exportToCSV()" class="bg-emerald-50 text-emerald-700 hover:bg-emerald-100 border border-emerald-200 py-2 px-4 rounded-lg flex items-center gap-2 transition-colors text-sm font-medium shadow-sm">
+                    <i class="fas fa-file-excel"></i> Exportar a Sheets (CSV)
+                </button>
+            </div>
+        </header>
+
+        <!-- Tabs -->
+        <div class="px-8 pt-4 bg-white border-b border-gray-200" id="tabs-container" style="display: none;">
+            <ul class="flex space-x-8 text-sm" id="tab-list">
+                <li onclick="switchTab('general')" id="tab-general" class="pb-3 cursor-pointer tab-active">Información General</li>
+                <li onclick="switchTab('outcomes')" id="tab-outcomes" class="pb-3 cursor-pointer tab-inactive">Objetivos (Outcomes)</li>
+                <li onclick="switchTab('activities')" id="tab-activities" class="pb-3 cursor-pointer tab-inactive">Actividades y Proyectos</li>
+                <li onclick="switchTab('entities')" id="tab-entities" class="pb-3 cursor-pointer tab-inactive">Entidades de Gobierno</li>
+            </ul>
+        </div>
+
+        <!-- Scrollable Content Area -->
+        <div class="flex-1 overflow-y-auto p-8" id="content-area">
+            <!-- Empty State -->
+            <div id="empty-state" class="h-full flex flex-col items-center justify-center text-gray-400">
+                <i class="fas fa-sitemap text-6xl mb-4 text-gray-300"></i>
+                <h3 class="text-xl font-medium text-gray-600">Ningún organismo seleccionado</h3>
+                <p class="mt-2 text-sm">Selecciona un organismo del panel izquierdo o crea uno nuevo.</p>
+            </div>
+
+            <!-- Tab: General Info -->
+            <div id="view-general" class="hidden fade-in max-w-4xl">
+                <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+                    <h3 class="text-lg font-semibold border-b pb-3 mb-5 text-gray-800"><i class="fas fa-info-circle text-blue-500 mr-2"></i> Datos del Plan / Organismo</h3>
+                    <form id="form-general" class="grid grid-cols-1 md:grid-cols-2 gap-6" onsubmit="saveGeneralInfo(event)">
+                        <div class="col-span-2">
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Nombre del Organismo</label>
+                            <input type="text" id="g-name" class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none" required>
+                        </div>
+                        <div class="col-span-2 md:col-span-1">
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Nombre del Plan (Ej. CSP)</label>
+                            <input type="text" id="g-plan" class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Periodo (Ej. 2023-2027)</label>
+                            <input type="text" id="g-period" class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Presupuesto (USD)</label>
+                            <input type="text" id="g-budget" class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Contacto Oficial</label>
+                            <input type="text" id="g-contact" class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none">
+                        </div>
+                        <div class="col-span-2">
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Alineación y Enfoque (ODS, Estrategias)</label>
+                            <textarea id="g-focus" rows="3" class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"></textarea>
+                        </div>
+                        <div class="col-span-2 flex justify-end">
+                            <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white py-2 px-6 rounded-lg font-medium transition shadow-sm">Guardar Cambios</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Tab: Outcomes -->
+            <div id="view-outcomes" class="hidden fade-in max-w-5xl">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="text-lg font-semibold text-gray-800"><i class="fas fa-bullseye text-red-500 mr-2"></i> Objetivos Estratégicos</h3>
+                    <button onclick="openModal('modal-outcome')" class="bg-slate-800 hover:bg-slate-700 text-white text-sm py-2 px-4 rounded-lg flex items-center gap-2"><i class="fas fa-plus"></i> Añadir Objetivo</button>
+                </div>
+                <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+                    <table class="w-full text-left border-collapse">
+                        <thead>
+                            <tr class="bg-gray-50 border-b text-sm text-gray-600">
+                                <th class="p-4 font-semibold w-32">ID</th>
+                                <th class="p-4 font-semibold">Descripción del Objetivo</th>
+                                <th class="p-4 font-semibold">Área de enfoque</th>
+                                <th class="p-4 font-semibold w-24">Acción</th>
+                            </tr>
+                        </thead>
+                        <tbody id="table-outcomes" class="text-sm divide-y">
+                            <!-- Injected by JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Tab: Activities -->
+            <div id="view-activities" class="hidden fade-in max-w-full">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="text-lg font-semibold text-gray-800"><i class="fas fa-tasks text-orange-500 mr-2"></i> Actividades y Proyectos</h3>
+                    <button onclick="openModal('modal-activity')" class="bg-slate-800 hover:bg-slate-700 text-white text-sm py-2 px-4 rounded-lg flex items-center gap-2"><i class="fas fa-plus"></i> Añadir Actividad</button>
+                </div>
+                <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left border-collapse min-w-[800px]">
+                            <thead>
+                                <tr class="bg-gray-50 border-b text-sm text-gray-600">
+                                    <th class="p-4 font-semibold">Proyecto / Actividad</th>
+                                    <th class="p-4 font-semibold">Outcome Asoc.</th>
+                                    <th class="p-4 font-semibold">Entidades</th>
+                                    <th class="p-4 font-semibold">Presupuesto/Recursos</th>
+                                    <th class="p-4 font-semibold w-24">Acción</th>
+                                </tr>
+                            </thead>
+                            <tbody id="table-activities" class="text-sm divide-y">
+                                <!-- Injected by JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab: Entities -->
+            <div id="view-entities" class="hidden fade-in max-w-5xl">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="text-lg font-semibold text-gray-800"><i class="fas fa-landmark text-indigo-500 mr-2"></i> Entidades Gubernamentales</h3>
+                    <button onclick="openModal('modal-entity')" class="bg-slate-800 hover:bg-slate-700 text-white text-sm py-2 px-4 rounded-lg flex items-center gap-2"><i class="fas fa-plus"></i> Añadir Entidad</button>
+                </div>
+                <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+                    <table class="w-full text-left border-collapse">
+                        <thead>
+                            <tr class="bg-gray-50 border-b text-sm text-gray-600">
+                                <th class="p-4 font-semibold">Entidad</th>
+                                <th class="p-4 font-semibold">Nivel</th>
+                                <th class="p-4 font-semibold">Áreas de Colaboración</th>
+                                <th class="p-4 font-semibold w-24">Acción</th>
+                            </tr>
+                        </thead>
+                        <tbody id="table-entities" class="text-sm divide-y">
+                            <!-- Injected by JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Modals for Data Entry -->
+    <!-- Modal: Outcome -->
+    <div id="modal-outcome" class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center z-50">
+        <div class="bg-white rounded-xl shadow-xl w-full max-w-lg mx-4">
+            <div class="px-6 py-4 border-b flex justify-between items-center">
+                <h3 class="font-bold text-lg">Añadir Objetivo</h3>
+                <button onclick="closeModal('modal-outcome')" class="text-gray-400 hover:text-gray-700"><i class="fas fa-times"></i></button>
+            </div>
+            <form onsubmit="saveData(event, 'outcomes', 'modal-outcome')" class="p-6 space-y-4">
+                <div><label class="block text-sm font-medium text-gray-700 mb-1">ID (Ej. Outcome 1)</label><input type="text" id="m-out-id" class="w-full px-3 py-2 border rounded-md" required></div>
+                <div><label class="block text-sm font-medium text-gray-700 mb-1">Descripción</label><textarea id="m-out-desc" rows="3" class="w-full px-3 py-2 border rounded-md" required></textarea></div>
+                <div><label class="block text-sm font-medium text-gray-700 mb-1">Área de Enfoque</label><input type="text" id="m-out-focus" class="w-full px-3 py-2 border rounded-md"></div>
+                <div class="pt-4 flex justify-end gap-2">
+                    <button type="button" onclick="closeModal('modal-outcome')" class="px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-lg">Cancelar</button>
+                    <button type="submit" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg">Guardar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal: Activity -->
+    <div id="modal-activity" class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center z-50">
+        <div class="bg-white rounded-xl shadow-xl w-full max-w-xl mx-4">
+            <div class="px-6 py-4 border-b flex justify-between items-center">
+                <h3 class="font-bold text-lg">Añadir Actividad</h3>
+                <button onclick="closeModal('modal-activity')" class="text-gray-400 hover:text-gray-700"><i class="fas fa-times"></i></button>
+            </div>
+            <form onsubmit="saveData(event, 'activities', 'modal-activity')" class="p-6 space-y-4 grid grid-cols-2 gap-4">
+                <div class="col-span-2"><label class="block text-sm font-medium text-gray-700 mb-1">Nombre del Proyecto / Actividad</label><input type="text" id="m-act-name" class="w-full px-3 py-2 border rounded-md" required></div>
+                <div><label class="block text-sm font-medium text-gray-700 mb-1">Outcome Asociado</label><input type="text" id="m-act-out" class="w-full px-3 py-2 border rounded-md"></div>
+                <div><label class="block text-sm font-medium text-gray-700 mb-1">Presupuesto/Recursos</label><input type="text" id="m-act-bud" class="w-full px-3 py-2 border rounded-md"></div>
+                <div class="col-span-2"><label class="block text-sm font-medium text-gray-700 mb-1">Entidades Involucradas</label><input type="text" id="m-act-ent" class="w-full px-3 py-2 border rounded-md"></div>
+                <div class="col-span-2 pt-2 flex justify-end gap-2">
+                    <button type="button" onclick="closeModal('modal-activity')" class="px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-lg">Cancelar</button>
+                    <button type="submit" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg">Guardar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal: Entity -->
+    <div id="modal-entity" class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center z-50">
+        <div class="bg-white rounded-xl shadow-xl w-full max-w-lg mx-4">
+            <div class="px-6 py-4 border-b flex justify-between items-center">
+                <h3 class="font-bold text-lg">Añadir Entidad de Gobierno</h3>
+                <button onclick="closeModal('modal-entity')" class="text-gray-400 hover:text-gray-700"><i class="fas fa-times"></i></button>
+            </div>
+            <form onsubmit="saveData(event, 'entities', 'modal-entity')" class="p-6 space-y-4">
+                <div><label class="block text-sm font-medium text-gray-700 mb-1">Nombre de la Entidad</label><input type="text" id="m-ent-name" class="w-full px-3 py-2 border rounded-md" required></div>
+                <div><label class="block text-sm font-medium text-gray-700 mb-1">Nivel (Nacional, Departamental, Municipal)</label><input type="text" id="m-ent-level" class="w-full px-3 py-2 border rounded-md"></div>
+                <div><label class="block text-sm font-medium text-gray-700 mb-1">Áreas de Colaboración</label><textarea id="m-ent-collab" rows="2" class="w-full px-3 py-2 border rounded-md"></textarea></div>
+                <div class="pt-4 flex justify-end gap-2">
+                    <button type="button" onclick="closeModal('modal-entity')" class="px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-lg">Cancelar</button>
+                    <button type="submit" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg">Guardar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Initial Data Structure pre-populated with PMA Bolivia context
+        const initialData = [
+            {
+                id: "org-1",
+                name: "Programa Mundial de Alimentos (PMA/WFP) - Bolivia",
+                planName: "Plan Estratégico de País (CSP)",
+                period: "2023-2027",
+                budget: "18.841.728 USD",
+                contact: "WFP.LaPaz@wfp.org | +(591-2) 2799011",
+                focus: "Transición de asistencia directa hacia asistencia técnica. ODS 2 (Hambre Cero) y ODS 17 (Alianzas). Grupos prioritarios: Mujeres rurales, indígenas.",
+                outcomes: [
+                    { id: "Outcome 1", desc: "Los hogares vulnerables afectados por shocks se benefician de acción anticipatoria y respuesta a emergencias.", focus: "Respuesta a emergencias y acción anticipatoria" },
+                    { id: "Outcome 2", desc: "Los pequeños agricultores y comunidades indígenas son más resilientes a los shocks climáticos.", focus: "Resiliencia y medios de vida" },
+                    { id: "Outcome 3", desc: "Las instituciones locales y nacionales tienen capacidades mejoradas relacionadas con el apoyo a grupos vulnerables.", focus: "Fortalecimiento institucional" }
+                ],
+                activities: [
+                    { name: "Transferencias de Efectivo (CBT)", outcome: "Outcome 1 y 2", entities: "VIDECI, MDRyT, Gob. Municipales", budget: "1.264.769 USD (2025)" },
+                    { name: "Acción Anticipatoria ante sequías", outcome: "Outcome 1", entities: "SENAMHI, MDRyT, Altiplano", budget: "No desglosado" },
+                    { name: "Plataforma ICCOM/INFOSPIE", outcome: "Outcome 3", entities: "MPD, MDRyT, SENAMHI", budget: "Grant UE" },
+                    { name: "Donación de trigo Rusia (1.400t)", outcome: "Outcome 1", entities: "Min. Desarrollo Productivo, EMAPA", budget: "1.400 toneladas" }
+                ],
+                entities: [
+                    { name: "Ministerio de Planificación del Desarrollo (MPD)", level: "Nacional", collab: "Políticas de gestión de riesgos, sistemas de información" },
+                    { name: "Ministerio de Desarrollo Rural y Tierras (MDRyT)", level: "Nacional", collab: "Pequeños productores, resiliencia rural, acceso a mercados" },
+                    { name: "Viceministerio de Defensa Civil (VIDECI)", level: "Nacional", collab: "Preparación y respuesta a emergencias, logística humanitaria" },
+                    { name: "SENAMHI", level: "Nacional", collab: "Datos climáticos, sistemas de alerta temprana" }
+                ]
+            }
+        ];
+
+        // Application State
+        let orgs = [];
+        let currentOrgId = null;
+        let currentTab = 'general';
+
+        function initApp() {
+            // Load from localStorage if exists, otherwise use initialData
+            const savedData = localStorage.getItem('cmsData');
+            if (savedData) {
+                try {
+                    orgs = JSON.parse(savedData);
+                } catch(e) { orgs = [...initialData]; }
+            } else {
+                orgs = JSON.parse(JSON.stringify(initialData));
+                saveToLocal();
+            }
+            
+            renderSidebar();
+            if (orgs.length > 0) {
+                selectOrg(orgs[0].id);
+            }
+        }
+
+        function saveToLocal() {
+            localStorage.setItem('cmsData', JSON.stringify(orgs));
+        }
+
+        function renderSidebar() {
+            const list = document.getElementById('org-list');
+            list.innerHTML = '';
+            orgs.forEach(org => {
+                const btn = document.createElement('button');
+                const isSelected = org.id === currentOrgId;
+                btn.className = `w-full text-left px-4 py-3 rounded-lg text-sm font-medium transition-colors flex items-center gap-3 ${isSelected ? 'bg-blue-600 text-white' : 'text-slate-300 hover:bg-slate-800'}`;
+                btn.onclick = () => selectOrg(org.id);
+                btn.innerHTML = `<i class="fas ${isSelected ? 'fa-folder-open' : 'fa-folder'}"></i> <span class="truncate">${org.name || 'Nuevo Organismo'}</span>`;
+                list.appendChild(btn);
+            });
+        }
+
+        function selectOrg(id) {
+            currentOrgId = id;
+            renderSidebar();
+            
+            document.getElementById('empty-state').style.display = 'none';
+            document.getElementById('tabs-container').style.display = 'block';
+            
+            const org = orgs.find(o => o.id === id);
+            if(!org) return;
+
+            document.getElementById('current-org-title').innerText = org.name || 'Organismo sin nombre';
+            document.getElementById('current-org-subtitle').innerText = `Gestión de datos para: ${org.planName || 'Plan General'}`;
+
+            // Populate General Form
+            document.getElementById('g-name').value = org.name || '';
+            document.getElementById('g-plan').value = org.planName || '';
+            document.getElementById('g-period').value = org.period || '';
+            document.getElementById('g-budget').value = org.budget || '';
+            document.getElementById('g-contact').value = org.contact || '';
+            document.getElementById('g-focus').value = org.focus || '';
+
+            renderTables(org);
+            switchTab(currentTab);
+        }
+
+        function switchTab(tabId) {
+            currentTab = tabId;
+            const tabs = ['general', 'outcomes', 'activities', 'entities'];
+            
+            tabs.forEach(t => {
+                // Style Tabs
+                const tabEl = document.getElementById(`tab-${t}`);
+                if(t === tabId) {
+                    tabEl.className = "pb-3 cursor-pointer tab-active";
+                } else {
+                    tabEl.className = "pb-3 cursor-pointer tab-inactive";
+                }
+                
+                // Show/Hide Content
+                const viewEl = document.getElementById(`view-${t}`);
+                if(t === tabId) {
+                    viewEl.classList.remove('hidden');
+                } else {
+                    viewEl.classList.add('hidden');
+                }
+            });
+        }
+
+        function renderTables(org) {
+            // Outcomes Table
+            const tOutcomes = document.getElementById('table-outcomes');
+            tOutcomes.innerHTML = '';
+            (org.outcomes || []).forEach((item, index) => {
+                tOutcomes.innerHTML += `
+                    <tr class="hover:bg-gray-50 transition">
+                        <td class="p-4 font-medium text-blue-600">${item.id}</td>
+                        <td class="p-4">${item.desc}</td>
+                        <td class="p-4"><span class="bg-gray-100 text-gray-600 px-2 py-1 rounded text-xs">${item.focus}</span></td>
+                        <td class="p-4"><button onclick="deleteItem('outcomes', ${index})" class="text-red-500 hover:text-red-700"><i class="fas fa-trash"></i></button></td>
+                    </tr>`;
+            });
+
+            // Activities Table
+            const tActivities = document.getElementById('table-activities');
+            tActivities.innerHTML = '';
+            (org.activities || []).forEach((item, index) => {
+                tActivities.innerHTML += `
+                    <tr class="hover:bg-gray-50 transition">
+                        <td class="p-4 font-medium">${item.name}</td>
+                        <td class="p-4 text-xs font-semibold text-gray-500">${item.outcome}</td>
+                        <td class="p-4 text-sm">${item.entities}</td>
+                        <td class="p-4 font-mono text-xs text-emerald-600">${item.budget}</td>
+                        <td class="p-4"><button onclick="deleteItem('activities', ${index})" class="text-red-500 hover:text-red-700"><i class="fas fa-trash"></i></button></td>
+                    </tr>`;
+            });
+
+            // Entities Table
+            const tEntities = document.getElementById('table-entities');
+            tEntities.innerHTML = '';
+            (org.entities || []).forEach((item, index) => {
+                tEntities.innerHTML += `
+                    <tr class="hover:bg-gray-50 transition">
+                        <td class="p-4 font-medium">${item.name}</td>
+                        <td class="p-4"><span class="bg-indigo-50 text-indigo-700 px-2 py-1 rounded-full text-xs font-semibold border border-indigo-100">${item.level}</span></td>
+                        <td class="p-4 text-sm">${item.collab}</td>
+                        <td class="p-4"><button onclick="deleteItem('entities', ${index})" class="text-red-500 hover:text-red-700"><i class="fas fa-trash"></i></button></td>
+                    </tr>`;
+            });
+        }
+
+        function createNewOrg() {
+            const newId = 'org-' + Date.now();
+            const newOrg = {
+                id: newId,
+                name: "Nuevo Organismo",
+                planName: "", period: "", budget: "", contact: "", focus: "",
+                outcomes: [], activities: [], entities: []
+            };
+            orgs.push(newOrg);
+            saveToLocal();
+            selectOrg(newId);
+        }
+
+        function saveGeneralInfo(e) {
+            e.preventDefault();
+            if(!currentOrgId) return;
+            const org = orgs.find(o => o.id === currentOrgId);
+            org.name = document.getElementById('g-name').value;
+            org.planName = document.getElementById('g-plan').value;
+            org.period = document.getElementById('g-period').value;
+            org.budget = document.getElementById('g-budget').value;
+            org.contact = document.getElementById('g-contact').value;
+            org.focus = document.getElementById('g-focus').value;
+            
+            saveToLocal();
+            selectOrg(currentOrgId); // re-render to update title/sidebar
+            
+            // Custom brief notification (instead of alert)
+            const btn = e.target.querySelector('button');
+            const originalText = btn.innerText;
+            btn.innerText = "¡Guardado!";
+            btn.classList.replace('bg-blue-600', 'bg-green-600');
+            setTimeout(() => {
+                btn.innerText = originalText;
+                btn.classList.replace('bg-green-600', 'bg-blue-600');
+            }, 2000);
+        }
+
+        function deleteItem(collection, index) {
+            if(!currentOrgId) return;
+            const org = orgs.find(o => o.id === currentOrgId);
+            org[collection].splice(index, 1);
+            saveToLocal();
+            renderTables(org);
+        }
+
+        function openModal(id) { document.getElementById(id).classList.remove('hidden'); }
+        function closeModal(id) { 
+            document.getElementById(id).classList.add('hidden'); 
+            document.getElementById(id).querySelector('form').reset();
+        }
+
+        function saveData(e, collection, modalId) {
+            e.preventDefault();
+            if(!currentOrgId) return;
+            const org = orgs.find(o => o.id === currentOrgId);
+            let newItem = {};
+
+            if(collection === 'outcomes') {
+                newItem = {
+                    id: document.getElementById('m-out-id').value,
+                    desc: document.getElementById('m-out-desc').value,
+                    focus: document.getElementById('m-out-focus').value
+                };
+            } else if (collection === 'activities') {
+                newItem = {
+                    name: document.getElementById('m-act-name').value,
+                    outcome: document.getElementById('m-act-out').value,
+                    budget: document.getElementById('m-act-bud').value,
+                    entities: document.getElementById('m-act-ent').value
+                };
+            } else if (collection === 'entities') {
+                newItem = {
+                    name: document.getElementById('m-ent-name').value,
+                    level: document.getElementById('m-ent-level').value,
+                    collab: document.getElementById('m-ent-collab').value
+                };
+            }
+
+            if(!org[collection]) org[collection] = [];
+            org[collection].push(newItem);
+            
+            saveToLocal();
+            renderTables(org);
+            closeModal(modalId);
+        }
+
+        function exportToCSV() {
+            if(!currentOrgId) return;
+            const org = orgs.find(o => o.id === currentOrgId);
+            
+            // Build a comprehensive CSV structure for the selected Organization
+            let csv = '\uFEFF'; // BOM for UTF-8 support in Excel/Sheets
+            
+            // 1. General
+            csv += `--- INFORMACION GENERAL ---\n`;
+            csv += `Organismo,Plan,Periodo,Presupuesto,Contacto\n`;
+            csv += `"${escapeCSV(org.name)}","${escapeCSV(org.planName)}","${escapeCSV(org.period)}","${escapeCSV(org.budget)}","${escapeCSV(org.contact)}"\n\n`;
+            
+            // 2. Outcomes
+            csv += `--- OBJETIVOS (OUTCOMES) ---\n`;
+            csv += `ID,Descripcion,Enfoque\n`;
+            (org.outcomes || []).forEach(o => {
+                csv += `"${escapeCSV(o.id)}","${escapeCSV(o.desc)}","${escapeCSV(o.focus)}"\n`;
+            });
+            csv += `\n`;
+
+            // 3. Activities
+            csv += `--- ACTIVIDADES ---\n`;
+            csv += `Nombre,Outcome Asociado,Entidades,Presupuesto\n`;
+            (org.activities || []).forEach(a => {
+                csv += `"${escapeCSV(a.name)}","${escapeCSV(a.outcome)}","${escapeCSV(a.entities)}","${escapeCSV(a.budget)}"\n`;
+            });
+            csv += `\n`;
+
+            // 4. Entities
+            csv += `--- ENTIDADES GUBERNAMENTALES ---\n`;
+            csv += `Entidad,Nivel,Colaboracion\n`;
+            (org.entities || []).forEach(e => {
+                csv += `"${escapeCSV(e.name)}","${escapeCSV(e.level)}","${escapeCSV(e.collab)}"\n`;
+            });
+
+            // Trigger download
+            const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+            const link = document.createElement('a');
+            const url = URL.createObjectURL(blob);
+            link.setAttribute('href', url);
+            link.setAttribute('download', `Datos_${org.name.replace(/\s+/g, '_')}.csv`);
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
+        function escapeCSV(str) {
+            if(!str) return "";
+            // Escape quotes by doubling them, as per CSV standard
+            return str.toString().replace(/"/g, '""');
+        }
+
+        // Iniciar
+        window.onload = initApp;
+    </script>
+</body>
+</html>
+```
