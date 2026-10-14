@@ -67,19 +67,19 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16">
                 <div class="flex items-center gap-3 cursor-pointer" onclick="navigateTo('home')">
-                    <div class="bg-green-700 p-2 rounded-lg text-white">
+                    <div class="bg-green-800 p-2 rounded-lg text-white">
                         <i class="fa-solid fa-earth-americas"></i>
                     </div>
-                    <span class="font-bold text-xl tracking-tight text-slate-900 hidden sm:block"><span class="text-green-700"></span></span>
+                    <span class="font-bold text-xl tracking-tight text-slate-900 hidden sm:block">Registro<span class="text-green-800">VCPME</span></span>
                 </div>
                 <div class="flex items-center space-x-1 sm:space-x-4">
-                    <button onclick="navigateTo('home')" class="nav-btn px-3 py-2 rounded-md text-sm font-medium text-slate-600 hover:text-green-700 hover:bg-slate-50 transition" data-target="home">
+                    <button onclick="navigateTo('home')" class="nav-btn px-3 py-2 rounded-md text-sm font-medium text-slate-600 hover:text-green-800 hover:bg-green-50 transition" data-target="home">
                         <i class="fa-solid fa-home mr-1"></i> Inicio
                     </button>
-                    <button onclick="navigateTo('dashboard')" class="nav-btn px-3 py-2 rounded-md text-sm font-medium text-slate-600 hover:text-green-700 hover:bg-slate-50 transition" data-target="dashboard">
+                    <button onclick="navigateTo('dashboard')" class="nav-btn px-3 py-2 rounded-md text-sm font-medium text-slate-600 hover:text-green-800 hover:bg-green-50 transition" data-target="dashboard">
                         <i class="fa-solid fa-chart-pie mr-1"></i> Dashboard
                     </button>
-                    <button onclick="navigateTo('form')" class="nav-btn px-3 py-2 rounded-md text-sm font-medium text-slate-600 hover:text-green-700 hover:bg-slate-50 transition" data-target="form">
+                    <button onclick="navigateTo('form')" class="nav-btn px-3 py-2 rounded-md text-sm font-medium text-slate-600 hover:text-green-800 hover:bg-green-50 transition" data-target="form">
                         <i class="fa-solid fa-file-signature mr-1"></i> Formulario
                     </button>
                 </div>
@@ -88,51 +88,48 @@
     </nav>
 
     <main class="flex-grow flex flex-col w-full">
-        <!-- VISTA: CARÁTULA (HOME) -->
         <section id="view-home" class="view-section active flex-grow flex flex-col">
-            <div class="flex-grow bg-gradient-to-br from-slate-900 via-green-900 to-slate-800 flex items-center relative overflow-hidden">
-                <!-- Background decorations -->
+            <div class="flex-grow bg-gradient-to-br from-slate-900 via-green-900 to-slate-900 flex items-center relative overflow-hidden">
                 <div class="absolute top-0 left-0 w-full h-full overflow-hidden opacity-20 pointer-events-none">
                     <div class="absolute -top-24 -right-24 w-96 h-96 rounded-full border-4 border-white"></div>
                     <div class="absolute bottom-12 -left-12 w-64 h-64 rounded-full border-4 border-green-500"></div>
                 </div>
                 
                 <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 py-20">
-                    <span class="inline-block py-1 px-3 rounded-full bg-green-600/20 text-green-200 text-sm font-semibold mb-6 border border-green-500/30">VCPME</span>
+                    <span class="inline-block py-1 px-3 rounded-full bg-green-800/40 text-green-200 text-sm font-semibold mb-6 border border-green-500/30">Plataforma Oficial</span>
                     <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight mb-6">
-                        Sistema de <br class="hidden sm:block"/>
+                        Sistema de Registro de <br class="hidden sm:block"/>
                         <span class="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-300">Proyectos y Convenios</span>
                     </h1>
                     <p class="mt-4 text-lg sm:text-xl text-green-100 max-w-3xl mx-auto mb-10 font-light leading-relaxed">
-                        Convenios financiados por organismos multilaterales, bilaterales y ONGs.
+                        Administración y seguimiento de convenios financiados por organismos multilaterales, bilaterales y ONGs.
                     </p>
                     <div class="flex flex-col sm:flex-row justify-center gap-4">
-                        <button onclick="navigateTo('form')" class="px-8 py-4 bg-green-700 hover:bg-green-600 text-white rounded-xl font-semibold shadow-lg shadow-green-700/30 transition-all flex items-center justify-center gap-2 text-lg">
+                        <button onclick="navigateTo('form')" class="px-8 py-4 bg-green-700 hover:bg-green-600 text-white rounded-xl font-semibold shadow-lg shadow-green-900/50 transition-all flex items-center justify-center gap-2 text-lg">
                             <i class="fa-solid fa-plus-circle"></i> Nuevo Registro
                         </button>
                         <button onclick="navigateTo('dashboard')" class="px-8 py-4 bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/20 text-white rounded-xl font-semibold transition-all flex items-center justify-center gap-2 text-lg">
-                            <i class="fa-solid fa-chart-line"></i> Ver Resumen
+                            <i class="fa-solid fa-chart-line"></i> Ver Dashboard
                         </button>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- VISTA: DASHBOARD -->
         <section id="view-dashboard" class="view-section max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full">
             <div class="mb-8 flex justify-between items-end">
                 <div>
-                    <h2 class="text-3xl font-bold text-slate-800">Dashboard Resumen</h2>
-                    <p class="text-slate-500 mt-1">Vista analítica de los proyectos y convenios registrados en la sesión actual.</p>
+                    <h2 class="text-3xl font-bold text-slate-800">Dashboard de Resumen</h2>
+                    <p class="text-slate-500 mt-1">Vista analítica de los proyectos registrados.</p>
                 </div>
-                <button onclick="navigateTo('form')" class="px-4 py-2 bg-green-50 text-green-800 border border-green-200 hover:bg-green-100 rounded-lg font-medium transition text-sm">
-                    <i class="fa-solid fa-plus mr-1"></i> Añadir Datos
+                <button onclick="navigateTo('form')" class="px-4 py-2 bg-green-800 text-white hover:bg-green-700 rounded-lg font-medium transition shadow-sm text-sm">
+                    <i class="fa-solid fa-plus mr-1"></i> Añadir Proyecto
                 </button>
             </div>
 
             <!-- Stats Row -->
             <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
-                <div class="bg-white rounded-xl border border-slate-200 p-6 shadow-sm">
+                <div class="bg-white rounded-xl border border-slate-200 p-6 shadow-sm border-t-4 border-t-green-700">
                     <div class="flex justify-between items-start">
                         <div>
                             <p class="text-sm font-medium text-slate-500 mb-1">Total Proyectos</p>
@@ -141,7 +138,7 @@
                         <div class="p-2 bg-green-50 text-green-700 rounded-lg"><i class="fa-solid fa-folder-open"></i></div>
                     </div>
                 </div>
-                <div class="bg-white rounded-xl border border-slate-200 p-6 shadow-sm">
+                <div class="bg-white rounded-xl border border-slate-200 p-6 shadow-sm border-t-4 border-t-emerald-600">
                     <div class="flex justify-between items-start">
                         <div>
                             <p class="text-sm font-medium text-slate-500 mb-1">Presupuesto (Bs)</p>
@@ -150,7 +147,7 @@
                         <div class="p-2 bg-emerald-50 text-emerald-600 rounded-lg"><i class="fa-solid fa-money-bill-wave"></i></div>
                     </div>
                 </div>
-                <div class="bg-white rounded-xl border border-slate-200 p-6 shadow-sm">
+                <div class="bg-white rounded-xl border border-slate-200 p-6 shadow-sm border-t-4 border-t-green-600">
                     <div class="flex justify-between items-start">
                         <div>
                             <p class="text-sm font-medium text-slate-500 mb-1">Presupuesto (USD)</p>
@@ -159,13 +156,13 @@
                         <div class="p-2 bg-green-50 text-green-600 rounded-lg"><i class="fa-solid fa-dollar-sign"></i></div>
                     </div>
                 </div>
-                <div class="bg-white rounded-xl border border-slate-200 p-6 shadow-sm">
+                <div class="bg-white rounded-xl border border-slate-200 p-6 shadow-sm border-t-4 border-t-teal-600">
                     <div class="flex justify-between items-start">
                         <div>
                             <p class="text-sm font-medium text-slate-500 mb-1">Beneficiarios Aprox.</p>
                             <h3 id="dash-total-pop" class="text-3xl font-bold text-slate-800">0</h3>
                         </div>
-                        <div class="p-2 bg-purple-50 text-purple-600 rounded-lg"><i class="fa-solid fa-users"></i></div>
+                        <div class="p-2 bg-teal-50 text-teal-600 rounded-lg"><i class="fa-solid fa-users"></i></div>
                     </div>
                 </div>
             </div>
@@ -179,7 +176,7 @@
                     </div>
                 </div>
                 <div class="bg-white rounded-xl border border-slate-200 p-6 shadow-sm">
-                    <h3 class="text-lg font-bold text-slate-800 mb-4">Estado de Ejecución (Monitoreo)</h3>
+                    <h3 class="text-lg font-bold text-slate-800 mb-4">Estado de Ejecución</h3>
                     <div class="relative h-64 w-full">
                         <canvas id="chartEstado"></canvas>
                     </div>
@@ -209,11 +206,10 @@
             </div>
         </section>
 
-        <!-- VISTA: FORMULARIO -->
         <section id="view-form" class="view-section max-w-5xl mx-auto px-4 py-8 w-full">
             <div class="flex justify-between items-center mb-8">
-                <h2 class="text-2xl sm:text-3xl font-bold text-slate-800"><i class="fa-solid fa-pen-to-square text-green-700 mr-2"></i> Formulario de Registro</h2>
-                <button onclick="navigateTo('payload')" class="px-4 py-2 bg-slate-800 text-white hover:bg-slate-700 rounded-lg font-medium transition text-sm flex items-center gap-2">
+                <h2 class="text-2xl sm:text-3xl font-bold text-slate-800"><i class="fa-solid fa-pen-to-square text-green-800 mr-2"></i> Formulario de Registro</h2>
+                <button onclick="navigateTo('payload')" class="px-4 py-2 bg-slate-800 text-white hover:bg-slate-700 rounded-lg font-medium transition text-sm flex items-center gap-2 shadow-sm">
                     <i class="fa-solid fa-code"></i> Ver JSON
                 </button>
             </div>
@@ -222,7 +218,7 @@
                 
                 <!-- TABS DE NAVEGACIÓN -->
                 <div class="flex overflow-x-auto border-b border-slate-200 mb-6" style="scrollbar-width: none;">
-                    <button type="button" id="btn-tab-sec1" onclick="switchFormTab(0)" class="whitespace-nowrap py-4 px-6 text-sm font-medium border-b-2 border-green-700 text-green-700 transition">
+                    <button type="button" id="btn-tab-sec1" onclick="switchFormTab(0)" class="whitespace-nowrap py-4 px-6 text-sm font-medium border-b-2 border-green-700 text-green-800 transition">
                         <i class="fa-solid fa-1 mr-2"></i> Información del Organismo
                     </button>
                     <button type="button" id="btn-tab-sec2" onclick="switchFormTab(1)" class="whitespace-nowrap py-4 px-6 text-sm font-medium border-b-2 border-transparent text-slate-500 hover:text-slate-700 hover:border-slate-300 transition">
@@ -233,183 +229,197 @@
                     </button>
                 </div>
 
-                <!-- SECCIÓN I -->
                 <div id="tab-sec1" class="block" style="animation: fadeIn 0.4s ease-in-out;">
                     <div class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
                         <div class="bg-slate-50 border-b border-slate-200 px-6 py-4 flex items-center gap-3">
-                            <i class="fa-solid fa-building-ngo text-green-700 text-xl"></i>
-                                    <span class="text-sm">Bilaterales</span>
-                                </label>
-                                <label class="flex items-center gap-2 p-3 border border-slate-200 rounded-lg hover:bg-slate-50 cursor-pointer transition">
-                                    <input type="radio" name="tipoOrganismo" value="ONG Internacionales" onchange="updateOrg('tipo', this.value)" class="text-green-700 focus:ring-green-600">
-                                    <span class="text-sm">ONG Internacionales</span>
-                                </label>
-                                <label class="flex items-center gap-2 p-3 border border-slate-200 rounded-lg hover:bg-slate-50 cursor-pointer transition">
-                                    <input type="radio" name="tipoOrganismo" value="Cooperación Sur-Sur" onchange="updateOrg('tipo', this.value)" class="text-green-700 focus:ring-green-600">
-                                    <span class="text-sm">Coop. Sur-Sur / Triangular</span>
-                                </label>
-                            </div>
+                            <i class="fa-solid fa-building-ngo text-green-800 text-xl"></i>
+                            <h3 class="text-lg font-semibold text-slate-800">SECCIÓN I. Información del Organismo Financiador</h3>
                         </div>
+                        <div class="p-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+                            
+                            <!-- 1.1 Tipo -->
+                            <div class="col-span-1 md:col-span-2">
+                                <label class="block text-sm font-medium text-slate-700 mb-2">1.1. Tipo de Organismo <span class="text-red-500">*</span></label>
+                                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+                                    <label class="flex items-center gap-2 p-3 border border-slate-200 rounded-lg hover:bg-slate-50 cursor-pointer transition">
+                                        <input type="radio" name="tipoOrganismo" value="Multilaterales" onchange="updateOrg('tipo', this.value)" class="text-green-700 focus:ring-green-700">
+                                        <span class="text-sm">Multilaterales</span>
+                                    </label>
+                                    <label class="flex items-center gap-2 p-3 border border-slate-200 rounded-lg hover:bg-slate-50 cursor-pointer transition">
+                                        <input type="radio" name="tipoOrganismo" value="Bilaterales" onchange="updateOrg('tipo', this.value)" class="text-green-700 focus:ring-green-700">
+                                        <span class="text-sm">Bilaterales</span>
+                                    </label>
+                                    <label class="flex items-center gap-2 p-3 border border-slate-200 rounded-lg hover:bg-slate-50 cursor-pointer transition">
+                                        <input type="radio" name="tipoOrganismo" value="No Gubernamentales Internacionales" onchange="updateOrg('tipo', this.value)" class="text-green-700 focus:ring-green-700">
+                                        <span class="text-sm text-balance">No Gubernamentales Internacionales</span>
+                                    </label>
+                                    <label class="flex items-center gap-2 p-3 border border-slate-200 rounded-lg hover:bg-slate-50 cursor-pointer transition">
+                                        <input type="radio" name="tipoOrganismo" value="Cooperación Sur-Sur y Triangular" onchange="updateOrg('tipo', this.value)" class="text-green-700 focus:ring-green-700">
+                                        <span class="text-sm text-balance">Cooperación Sur-Sur y Triangular</span>
+                                    </label>
+                                </div>
+                            </div>
 
-                        <!-- 1.2 Nombre -->
-                        <div class="col-span-1 md:col-span-2">
-                            <label class="block text-sm font-medium text-slate-700 mb-1">1.2. Nombre del Organismo Financiador <span class="text-red-500">*</span></label>
-                            <p class="text-xs text-slate-500 mb-2">Seleccione de la lista o escriba para añadir uno nuevo dinámicamente.</p>
-                            <input type="text" list="lista-organismos" onchange="updateOrg('nombre', this.value)" required placeholder="Ej. PNUD, AECID, UNICEF..." class="w-full rounded-lg border border-slate-300 px-4 py-2.5 text-sm focus:border-green-600 focus:ring-2 focus:ring-green-600/20 outline-none transition">
-                            <datalist id="lista-organismos">
-                                <option value="PMA"></option><option value="PNUD"></option><option value="UNICEF"></option><option value="OIT"></option><option value="FAO"></option>
-                                <option value="AECID (España)"></option><option value="AFD (Francia)"></option><option value="JICA (Japón)"></option><option value="SDC/COSUDE (Suiza)"></option>
-                                <option value="KOICA (Corea del Sur)"></option><option value="GIZ (Alemania)"></option>
-                                <option value="ONG - Save the Children"></option><option value="ONG - Visión Mundial"></option><option value="ONG - Médicos Sin Fronteras"></option><option value="ONG - Oxfam"></option>
-                                <option value="Actores Emergentes - ABC"></option><option value="Actores Emergentes - Argentina FO.AR"></option>
-                            </datalist>
-                        </div>
+                            <!-- 1.2 Nombre -->
+                            <div class="col-span-1 md:col-span-2">
+                                <label class="block text-sm font-medium text-slate-700 mb-1">1.2. Nombre del Organismo Financiador <span class="text-red-500">*</span></label>
+                                <p class="text-xs text-slate-500 mb-2">Seleccione de la lista o escriba para añadir uno nuevo dinámicamente.</p>
+                                <input type="text" list="lista-organismos" onchange="updateOrg('nombre', this.value)" required placeholder="Ej. PNUD, AECID, UNICEF..." class="w-full rounded-lg border border-slate-300 px-4 py-2.5 text-sm focus:border-green-700 focus:ring-2 focus:ring-green-700/20 outline-none transition">
+                                <datalist id="lista-organismos">
+                                    <option value="PMA"></option><option value="PNUD"></option><option value="UNICEF"></option><option value="OIT"></option><option value="FAO"></option>
+                                    <option value="AECID (España)"></option><option value="AFD (Francia)"></option><option value="JICA (Japón)"></option><option value="SDC/COSUDE (Suiza)"></option>
+                                    <option value="KOICA (Corea del Sur)"></option><option value="GIZ (Alemania)"></option>
+                                    <option value="ONG - Save the Children"></option><option value="ONG - Visión Mundial"></option><option value="ONG - Médicos Sin Fronteras"></option><option value="ONG - Oxfam"></option>
+                                    <option value="Actores Emergentes - ABC"></option><option value="Actores Emergentes - Argentina FO.AR"></option>
+                                </datalist>
+                            </div>
 
-                        <!-- 1.3 Contacto Oficial -->
-                        <div class="bg-slate-50 p-4 rounded-lg border border-slate-100 space-y-4">
-                            <h4 class="font-semibold text-sm text-slate-700 flex items-center gap-2 border-b pb-2"><i class="fa-solid fa-user-tie"></i> 1.3. Contacto Oficial</h4>
-                            <div>
-                                <label class="block text-xs font-medium text-slate-600 mb-1">Nombre</label>
-                                <input type="text" onchange="updateOrgContact('oficial', 'nombre', this.value)" class="w-full rounded-md border border-slate-300 px-3 py-2 text-sm focus:border-green-600 outline-none">
+                            <!-- 1.3 Contacto Oficial -->
+                            <div class="bg-slate-50 p-4 rounded-lg border border-slate-100 space-y-4">
+                                <h4 class="font-semibold text-sm text-slate-700 flex items-center gap-2 border-b pb-2"><i class="fa-solid fa-user-tie"></i> 1.3. Contacto Oficial</h4>
+                                <div>
+                                    <label class="block text-xs font-medium text-slate-600 mb-1">Nombre</label>
+                                    <input type="text" onchange="updateOrgContact('oficial', 'nombre', this.value)" class="w-full rounded-md border border-slate-300 px-3 py-2 text-sm focus:border-green-700 outline-none">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-medium text-slate-600 mb-1">Teléfono</label>
+                                    <input type="tel" onchange="updateOrgContact('oficial', 'telefono', this.value)" class="w-full rounded-md border border-slate-300 px-3 py-2 text-sm focus:border-green-700 outline-none">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-medium text-slate-600 mb-1">Otros Contactos</label>
+                                    <input type="text" onchange="updateOrgContact('oficial', 'otros', this.value)" class="w-full rounded-md border border-slate-300 px-3 py-2 text-sm focus:border-green-700 outline-none">
+                                </div>
                             </div>
-                            <div>
-                                <label class="block text-xs font-medium text-slate-600 mb-1">Teléfono</label>
-                                <input type="tel" onchange="updateOrgContact('oficial', 'telefono', this.value)" class="w-full rounded-md border border-slate-300 px-3 py-2 text-sm focus:border-green-600 outline-none">
-                            </div>
-                            <div>
-                                <label class="block text-xs font-medium text-slate-600 mb-1">Otros (Email)</label>
-                                <input type="text" onchange="updateOrgContact('oficial', 'otros', this.value)" class="w-full rounded-md border border-slate-300 px-3 py-2 text-sm focus:border-green-600 outline-none">
-                            </div>
-                        </div>
 
-                        <!-- 1.4 Contacto Operativo -->
-                        <div class="bg-slate-50 p-4 rounded-lg border border-slate-100 space-y-4">
-                            <h4 class="font-semibold text-sm text-slate-700 flex items-center gap-2 border-b pb-2"><i class="fa-solid fa-users-gear"></i> 1.4. Contacto Operativo</h4>
-                            <div>
-                                <label class="block text-xs font-medium text-slate-600 mb-1">Nombre</label>
-                                <input type="text" onchange="updateOrgContact('operativo', 'nombre', this.value)" class="w-full rounded-md border border-slate-300 px-3 py-2 text-sm focus:border-green-600 outline-none">
+                            <!-- 1.4 Contacto Operativo -->
+                            <div class="bg-slate-50 p-4 rounded-lg border border-slate-100 space-y-4">
+                                <h4 class="font-semibold text-sm text-slate-700 flex items-center gap-2 border-b pb-2"><i class="fa-solid fa-users-gear"></i> 1.4. Contacto Operativo</h4>
+                                <div>
+                                    <label class="block text-xs font-medium text-slate-600 mb-1">Nombre</label>
+                                    <input type="text" onchange="updateOrgContact('operativo', 'nombre', this.value)" class="w-full rounded-md border border-slate-300 px-3 py-2 text-sm focus:border-green-700 outline-none">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-medium text-slate-600 mb-1">Teléfono</label>
+                                    <input type="tel" onchange="updateOrgContact('operativo', 'telefono', this.value)" class="w-full rounded-md border border-slate-300 px-3 py-2 text-sm focus:border-green-700 outline-none">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-medium text-slate-600 mb-1">Otros Contactos</label>
+                                    <input type="text" onchange="updateOrgContact('operativo', 'otros', this.value)" class="w-full rounded-md border border-slate-300 px-3 py-2 text-sm focus:border-green-700 outline-none">
+                                </div>
                             </div>
-                            <div>
-                                <label class="block text-xs font-medium text-slate-600 mb-1">Teléfono</label>
-                                <input type="tel" onchange="updateOrgContact('operativo', 'telefono', this.value)" class="w-full rounded-md border border-slate-300 px-3 py-2 text-sm focus:border-green-600 outline-none">
-                            </div>
-                            <div>
-                                <label class="block text-xs font-medium text-slate-600 mb-1">Otros (Email)</label>
-                                <input type="text" onchange="updateOrgContact('operativo', 'otros', this.value)" class="w-full rounded-md border border-slate-300 px-3 py-2 text-sm focus:border-green-600 outline-none">
-                            </div>
-                        </div>
 
-                        <!-- 1.5 y 1.6 -->
-                        <div class="col-span-1 md:col-span-2 space-y-4">
-                            <div>
-                                <label class="block text-sm font-medium text-slate-700 mb-1">1.5. Nombre del Proyecto País <span class="text-red-500">*</span></label>
-                                <input type="text" onchange="updateOrg('nombreProyectoPais', this.value)" required class="w-full rounded-lg border border-slate-300 px-4 py-2.5 text-sm focus:border-green-600 outline-none">
-                            </div>
-                            <div>
-                                <label class="block text-sm font-medium text-slate-700 mb-1">1.6. Objetivo del Proyecto País</label>
-                                <textarea onchange="updateOrg('objetivoProyectoPais', this.value)" rows="3" class="w-full rounded-lg border border-slate-300 px-4 py-2.5 text-sm focus:border-green-600 outline-none resize-y"></textarea>
+                            <!-- 1.5 y 1.6 -->
+                            <div class="col-span-1 md:col-span-2 space-y-4">
+                                <div>
+                                    <label class="block text-sm font-medium text-slate-700 mb-1">1.5. Nombre del Proyecto País <span class="text-red-500">*</span></label>
+                                    <input type="text" onchange="updateOrg('nombreProyectoPais', this.value)" required class="w-full rounded-lg border border-slate-300 px-4 py-2.5 text-sm focus:border-green-700 outline-none">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-slate-700 mb-1">1.6. Objetivo del Proyecto País</label>
+                                    <textarea onchange="updateOrg('objetivoProyectoPais', this.value)" rows="3" class="w-full rounded-lg border border-slate-300 px-4 py-2.5 text-sm focus:border-green-700 outline-none resize-y"></textarea>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- SECCIÓN II: Proyectos -->
                 <div id="tab-sec2" class="hidden" style="animation: fadeIn 0.4s ease-in-out;">
                     <div>
                         <div class="flex justify-between items-center mb-4">
                             <h3 class="text-xl font-bold text-slate-800 flex items-center gap-2">
-                                <i class="fa-solid fa-diagram-project text-green-700"></i> SECCIÓN II. Actividades y Proyectos
-                        <button type="button" onclick="addProject()" class="px-4 py-2 bg-green-100 text-green-800 hover:bg-green-200 rounded-lg text-sm font-semibold transition flex items-center gap-2">
-                            <i class="fa-solid fa-plus"></i> Añadir Ficha
-                        </button>
-                    </div>
-                    
-                    <!-- Container dinámico -->
-                    <div id="projects-container" class="space-y-6">
-                        <!-- Los proyectos se inyectan aquí con JS -->
+                                <i class="fa-solid fa-diagram-project text-green-800"></i> SECCIÓN II. Registro de Actividades y Proyectos
+                            </h3>
+                            <button type="button" onclick="addProject()" class="px-4 py-2 bg-green-100 text-green-800 hover:bg-green-200 rounded-lg text-sm font-semibold transition flex items-center gap-2 shadow-sm">
+                                <i class="fa-solid fa-plus"></i> Añadir Ficha
+                            </button>
+                        </div>
+                        <!-- Container dinámico -->
+                        <div id="projects-container" class="space-y-6">
+                            <!-- Los proyectos se inyectan aquí con JS -->
+                        </div>
                     </div>
                 </div>
 
-                <!-- SECCIÓN III: Monitoreo -->
                 <div id="tab-sec3" class="hidden" style="animation: fadeIn 0.4s ease-in-out;">
-                    <div class="bg-white rounded-xl border border-slate-200 border-t-4 border-t-emerald-500 shadow-sm overflow-hidden">
+                    <div class="bg-white rounded-xl border border-slate-200 border-t-4 border-t-emerald-600 shadow-sm overflow-hidden">
                         <div class="bg-slate-50 border-b border-slate-200 px-6 py-4 flex items-center gap-3">
                             <i class="fa-solid fa-satellite-dish text-emerald-600 text-xl"></i>
                             <h3 class="text-lg font-semibold text-slate-800">SECCIÓN III. Seguimiento y Monitoreo al Proyecto</h3>
-                    
-                    <div class="p-6">
-                        <div class="mb-6 p-4 bg-emerald-50 rounded-lg border border-emerald-100">
-                            <label class="block text-sm font-medium text-emerald-800 mb-2">Vincular al Proyecto:</label>
-                            <select id="monitoreo-project-select" onchange="switchMonitoreoProject(this.value)" class="w-full rounded-lg border border-emerald-300 px-4 py-2 text-sm focus:border-emerald-500 outline-none bg-white">
-                                <!-- Opciones inyectadas por JS -->
-                            </select>
-                            <p class="text-xs text-emerald-600 mt-2"><i class="fa-solid fa-circle-info"></i> Seleccione la ficha de proyecto creada en la Sección II a la cual registrará el avance.</p>
                         </div>
+                        <div class="p-6">
+                            <!-- Selector del proyecto al cual se vinculará -->
+                            <div class="mb-6 p-4 bg-emerald-50 rounded-lg border border-emerald-100">
+                                <label class="block text-sm font-medium text-emerald-900 mb-2">Vincular al Proyecto:</label>
+                                <select id="monitoreo-project-select" onchange="switchMonitoreoProject(this.value)" class="w-full rounded-lg border border-emerald-300 px-4 py-2 text-sm focus:border-emerald-600 outline-none bg-white font-medium">
+                                    <!-- Opciones inyectadas por JS -->
+                                </select>
+                                <p class="text-xs text-emerald-700 mt-2"><i class="fa-solid fa-circle-info"></i> Seleccione la ficha creada en la Sección II a la cual registrará el avance.</p>
+                            </div>
 
-                        <div id="monitoreo-fields" class="grid grid-cols-1 md:grid-cols-2 gap-6 opacity-50 pointer-events-none transition-opacity duration-300">
-                            <!-- Estado Actual -->
-                            <div class="col-span-1 md:col-span-2">
-                                <label class="block text-sm font-medium text-slate-700 mb-2">3.1. Estado Actual</label>
-                                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
-                                    <label class="flex items-center gap-2 p-3 border border-slate-200 rounded-lg hover:bg-slate-50 cursor-pointer transition">
-                                        <input type="radio" name="estadoActual" value="En ejecución continua / Activo" onchange="updateMonitoreo('estadoActual', this.value)" class="text-emerald-600 focus:ring-emerald-500">
-                                        <span class="text-sm">En ejecución / Activo</span>
-                                    </label>
-                                    <label class="flex items-center gap-2 p-3 border border-slate-200 rounded-lg hover:bg-slate-50 cursor-pointer transition">
-                                        <input type="radio" name="estadoActual" value="En implementación inicial" onchange="updateMonitoreo('estadoActual', this.value)" class="text-emerald-600 focus:ring-emerald-500">
-                                        <span class="text-sm">Implementación inicial</span>
-                                    </label>
-                                    <label class="flex items-center gap-2 p-3 border border-slate-200 rounded-lg hover:bg-slate-50 cursor-pointer transition">
-                                        <input type="radio" name="estadoActual" value="Implementado / En expansión" onchange="updateMonitoreo('estadoActual', this.value)" class="text-emerald-600 focus:ring-emerald-500">
-                                        <span class="text-sm">Implementado / Expansión</span>
-                                    </label>
-                                    <label class="flex items-center gap-2 p-3 border border-slate-200 rounded-lg hover:bg-slate-50 cursor-pointer transition">
-                                        <input type="radio" name="estadoActual" value="Aprobado" onchange="updateMonitoreo('estadoActual', this.value)" class="text-emerald-600 focus:ring-emerald-500">
-                                        <span class="text-sm">Aprobado (Aún sin ejecución)</span>
-                                    </label>
+                            <div id="monitoreo-fields" class="grid grid-cols-1 md:grid-cols-2 gap-6 opacity-50 pointer-events-none transition-opacity duration-300">
+                                <!-- 3.1 Estado Actual -->
+                                <div class="col-span-1 md:col-span-2">
+                                    <label class="block text-sm font-medium text-slate-700 mb-2">3.1. Estado Actual</label>
+                                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+                                        <label class="flex items-center gap-2 p-3 border border-slate-200 rounded-lg hover:bg-slate-50 cursor-pointer transition">
+                                            <input type="radio" name="estadoActual" value="En ejecución continua / Activo" onchange="updateMonitoreo('estadoActual', this.value)" class="text-emerald-600 focus:ring-emerald-600">
+                                            <span class="text-sm">En ejecución continua / Activo</span>
+                                        </label>
+                                        <label class="flex items-center gap-2 p-3 border border-slate-200 rounded-lg hover:bg-slate-50 cursor-pointer transition">
+                                            <input type="radio" name="estadoActual" value="En implementación inicial / En proceso" onchange="updateMonitoreo('estadoActual', this.value)" class="text-emerald-600 focus:ring-emerald-600">
+                                            <span class="text-sm">En implementación inicial / En proceso</span>
+                                        </label>
+                                        <label class="flex items-center gap-2 p-3 border border-slate-200 rounded-lg hover:bg-slate-50 cursor-pointer transition">
+                                            <input type="radio" name="estadoActual" value="Implementado / En expansión" onchange="updateMonitoreo('estadoActual', this.value)" class="text-emerald-600 focus:ring-emerald-600">
+                                            <span class="text-sm">Implementado / En expansión</span>
+                                        </label>
+                                        <label class="flex items-center gap-2 p-3 border border-slate-200 rounded-lg hover:bg-slate-50 cursor-pointer transition">
+                                            <input type="radio" name="estadoActual" value="Aprobado" onchange="updateMonitoreo('estadoActual', this.value)" class="text-emerald-600 focus:ring-emerald-600">
+                                            <span class="text-sm">Aprobado</span>
+                                        </label>
+                                    </div>
                                 </div>
-                            </div>
 
-                            <!-- Fechas -->
-                            <div>
-                                <label class="block text-sm font-medium text-slate-700 mb-1">3.2. Gestión (Año Inicio)</label>
-                                <input type="number" id="monitoreo-inicio" onchange="updateMonitoreo('anioInicio', this.value)" placeholder="Ej. 2023" class="w-full rounded-lg border border-slate-300 px-4 py-2.5 text-sm focus:border-emerald-500 outline-none">
-                            </div>
-                            <div>
-                                <label class="block text-sm font-medium text-slate-700 mb-1">3.2. Gestión (Año Fin / Vigencia)</label>
-                                <input type="text" id="monitoreo-fin" onchange="updateMonitoreo('anioFin', this.value)" placeholder="Ej. 2027 o Indefinido" class="w-full rounded-lg border border-slate-300 px-4 py-2.5 text-sm focus:border-emerald-500 outline-none">
-                            </div>
-
-                            <!-- Documentos -->
-                            <div class="col-span-1 md:col-span-2">
-                                <label class="block text-sm font-medium text-slate-700 mb-1">3.3. Documentos de Soporte Adjuntos</label>
-                                <p class="text-xs text-slate-500 mb-2">Pega la URL de la carpeta compartida (POA, Informes, etc.)</p>
-                                <div class="flex items-center gap-2">
-                                    <i class="fa-solid fa-link text-slate-400"></i>
-                                    <input type="url" id="monitoreo-docs" onchange="updateMonitoreo('documentos', this.value)" placeholder="https://drive.google.com/..." class="w-full rounded-lg border border-slate-300 px-4 py-2.5 text-sm focus:border-emerald-500 outline-none">
+                                <!-- 3.2 Fechas -->
+                                <div>
+                                    <label class="block text-sm font-medium text-slate-700 mb-1">3.2. Gestión / Período (Año Inicio)</label>
+                                    <input type="number" id="monitoreo-inicio" onchange="updateMonitoreo('anioInicio', this.value)" placeholder="Ej. 2023" class="w-full rounded-lg border border-slate-300 px-4 py-2.5 text-sm focus:border-emerald-600 outline-none">
                                 </div>
-                            </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-slate-700 mb-1">3.2. Gestión / Período (Año Fin / Vigencia)</label>
+                                    <input type="text" id="monitoreo-fin" onchange="updateMonitoreo('anioFin', this.value)" placeholder="Ej. 2027 o Indefinido" class="w-full rounded-lg border border-slate-300 px-4 py-2.5 text-sm focus:border-emerald-600 outline-none">
+                                </div>
 
-                            <!-- Área -->
-                            <div class="col-span-1 md:col-span-2">
-                                <label class="block text-sm font-medium text-slate-700 mb-1">3.4. Área Geográfica & Cobertura Específica</label>
-                                <textarea id="monitoreo-area" onchange="updateMonitoreo('area', this.value)" rows="2" class="w-full rounded-lg border border-slate-300 px-4 py-2.5 text-sm focus:border-emerald-500 outline-none resize-y"></textarea>
+                                <!-- 3.3 Documentos -->
+                                <div class="col-span-1 md:col-span-2">
+                                    <label class="block text-sm font-medium text-slate-700 mb-1">3.3. Documentos de Soporte Adjuntos</label>
+                                    <p class="text-xs text-slate-500 mb-2">Ej. Informe Anual, Convenio Específico, POA. Permite URL o link a la nube.</p>
+                                    <div class="flex items-center gap-2">
+                                        <i class="fa-solid fa-link text-slate-400"></i>
+                                        <input type="text" id="monitoreo-docs" onchange="updateMonitoreo('documentos', this.value)" placeholder="https://drive.google.com/..." class="w-full rounded-lg border border-slate-300 px-4 py-2.5 text-sm focus:border-emerald-600 outline-none">
+                                    </div>
+                                </div>
+
+                                <!-- 3.4 Área -->
+                                <div class="col-span-1 md:col-span-2">
+                                    <label class="block text-sm font-medium text-slate-700 mb-1">3.4. Área Geográfica & Cobertura Territorial</label>
+                                    <textarea id="monitoreo-area" onchange="updateMonitoreo('area', this.value)" rows="2" class="w-full rounded-lg border border-slate-300 px-4 py-2.5 text-sm focus:border-emerald-600 outline-none resize-y"></textarea>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Submit Area -->
                 <div class="flex flex-col sm:flex-row justify-between items-center pt-6 border-t border-slate-200 gap-4 mt-8">
-                    <button type="button" id="btn-prev-tab" onclick="prevTab()" class="hidden px-6 py-3 rounded-lg font-medium text-slate-600 bg-white border border-slate-300 hover:bg-slate-50 transition w-full sm:w-auto flex justify-center items-center gap-2">
-                        <i class="fa-solid fa-arrow-left"></i> Anterior
+                    <button type="button" id="btn-prev-tab" onclick="prevTab()" class="hidden px-6 py-3 rounded-lg font-medium text-slate-600 bg-white border border-slate-300 hover:bg-slate-50 transition shadow-sm w-full sm:w-auto flex justify-center items-center gap-2">
+                        <i class="fa-solid fa-arrow-left"></i> Volver al paso anterior
                     </button>
                     
                     <div class="flex gap-4 w-full sm:w-auto ml-auto justify-end">
                         <button type="button" id="btn-next-tab" onclick="nextTab()" class="px-6 py-3 rounded-lg font-medium text-white bg-slate-800 hover:bg-slate-900 shadow-md transition w-full sm:w-auto flex justify-center items-center gap-2">
-                            Siguiente <i class="fa-solid fa-arrow-right"></i>
+                            Continuar <i class="fa-solid fa-arrow-right"></i>
                         </button>
-                        <button type="submit" id="btn-submit-form" class="hidden px-6 py-3 rounded-lg font-medium text-white bg-green-700 hover:bg-green-800 shadow-md transition w-full sm:w-auto flex justify-center items-center gap-2">
+                        <button type="submit" id="btn-submit-form" class="hidden px-6 py-3 rounded-lg font-medium text-white bg-green-800 hover:bg-green-900 shadow-md shadow-green-900/30 transition w-full sm:w-auto flex justify-center items-center gap-2">
                             <i class="fa-solid fa-save"></i> Guardar Registro Completo
                         </button>
                     </div>
@@ -417,7 +427,6 @@
             </form>
         </section>
 
-        <!-- VISTA: PAYLOAD JSON -->
         <section id="view-payload" class="view-section max-w-4xl mx-auto px-4 py-8 w-full">
             <div class="bg-slate-900 rounded-xl overflow-hidden shadow-2xl border border-slate-800">
                 <div class="bg-slate-800 px-6 py-4 flex items-center justify-between border-b border-slate-700">
@@ -435,23 +444,22 @@
                 </div>
             </div>
             <div class="mt-6 flex justify-center">
-                <button onclick="navigateTo('form')" class="px-6 py-3 rounded-lg font-medium text-green-700 bg-green-50 hover:bg-green-100 border border-green-200 transition flex items-center gap-2">
+                <button onclick="navigateTo('form')" class="px-6 py-3 rounded-lg font-medium text-green-800 bg-green-50 hover:bg-green-100 border border-green-200 transition flex items-center gap-2 shadow-sm">
                     <i class="fa-solid fa-arrow-left"></i> Volver al Formulario
                 </button>
             </div>
         </section>
 
-        <!-- MODAL RESUMEN COMPLETO DE REGISTRO -->
         <div id="summary-modal" class="fixed inset-0 z-[100] hidden bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4 opacity-0 transition-opacity duration-300">
             <div class="bg-white rounded-2xl shadow-2xl w-full max-w-4xl max-h-[90vh] flex flex-col overflow-hidden transform transition-all scale-95" id="summary-modal-content">
                 <!-- Header del Modal -->
                 <div class="px-6 py-4 border-b border-slate-200 flex flex-col sm:flex-row justify-between items-center bg-slate-50 gap-4">
                     <h3 class="text-xl font-bold text-slate-800 flex items-center gap-2 w-full sm:w-auto">
-                        <i class="fa-solid fa-file-lines text-green-700"></i> Resumen de Fichas
+                        <i class="fa-solid fa-file-lines text-green-800"></i> Reporte Detallado
                     </h3>
                     <div class="flex items-center gap-4 w-full sm:w-auto print-hide">
-                        <!-- Selector de Fichas / Proyectos -->
-                        <div class="flex items-center gap-2 w-full sm:w-auto bg-white border border-slate-300 rounded-lg px-3 py-1.5 focus-within:border-green-600 focus-within:ring-2 focus-within:ring-green-600/20 transition-all shadow-sm">
+                        <!-- Selector de Fichas -->
+                        <div class="flex items-center gap-2 w-full sm:w-auto bg-white border border-slate-300 rounded-lg px-3 py-1.5 focus-within:border-green-700 focus-within:ring-2 focus-within:ring-green-700/20 transition-all shadow-sm">
                             <label class="text-sm text-slate-500 font-semibold whitespace-nowrap"><i class="fa-solid fa-filter"></i> Ver Ficha:</label>
                             <select id="modal-project-selector" onchange="renderProjectSummary(this.value)" class="w-full sm:w-auto text-sm font-medium text-slate-800 outline-none bg-transparent cursor-pointer">
                                 <!-- Llenado por JS -->
@@ -491,22 +499,21 @@
                 contactoOperativo: { nombre: '', telefono: '', otros: '' },
                 nombreProyectoPais: '', objetivoProyectoPais: ''
             },
-            proyectos: [], // Array de proyectos
-            monitoreo: {}  // Diccionario: { projectId: { datos... } }
+            proyectos: [], // Array de proyectos (Sección II)
+            monitoreo: {}  // Diccionario: { projectId: { datos de la Sección III } }
         };
 
         let currentMonitoreoProject = null;
         let chartClasificacionInstance = null;
         let chartEstadoInstance = null;
 
-        // --- SISTEMA DE PESTAÑAS DEL FORMULARIO ---
+        // --- SISTEMA DE PESTAÑAS (WIZARD) ---
         const formTabs = ['sec1', 'sec2', 'sec3'];
         let currentFormTabIndex = 0;
 
         function switchFormTab(index) {
             currentFormTabIndex = index;
             
-            // Actualizar vista de pestañas y botones superiores
             formTabs.forEach((tab, i) => {
                 const contentEl = document.getElementById('tab-' + tab);
                 const btnEl = document.getElementById('btn-tab-' + tab);
@@ -514,74 +521,60 @@
                 if (i === index) {
                     contentEl.classList.remove('hidden');
                     contentEl.classList.add('block');
-                    btnEl.classList.add('border-green-700', 'text-green-700');
+                    btnEl.classList.add('border-green-700', 'text-green-800');
                     btnEl.classList.remove('border-transparent', 'text-slate-500');
                 } else {
                     contentEl.classList.add('hidden');
                     contentEl.classList.remove('block');
-                    btnEl.classList.remove('border-green-700', 'text-green-700');
+                    btnEl.classList.remove('border-green-700', 'text-green-800');
                     btnEl.classList.add('border-transparent', 'text-slate-500');
                 }
             });
 
-            // Actualizar botones de navegación inferior
             document.getElementById('btn-prev-tab').classList.toggle('hidden', index === 0);
             
             if (index === formTabs.length - 1) {
-                // En la última pestaña: Mostrar Guardar, ocultar Siguiente
                 document.getElementById('btn-next-tab').classList.add('hidden');
                 document.getElementById('btn-submit-form').classList.remove('hidden');
             } else {
-                // En otras pestañas: Mostrar Siguiente, ocultar Guardar
                 document.getElementById('btn-next-tab').classList.remove('hidden');
                 document.getElementById('btn-submit-form').classList.add('hidden');
             }
             
-            // Hacer scroll suave hacia el inicio del formulario
             document.getElementById('view-form').scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
 
         function nextTab() {
             if (currentFormTabIndex < formTabs.length - 1) switchFormTab(currentFormTabIndex + 1);
         }
-        
         function prevTab() {
             if (currentFormTabIndex > 0) switchFormTab(currentFormTabIndex - 1);
         }
 
-        // Opciones Globales (Datalists predefinidos para Tags)
+        // --- DATALISTS GLOBALES ---
         const OPCIONES_SOCIOS = ["UE", "Joint SDG Fund", "Cooperación Bilateral", "GAMs", "Gobernaciones"];
-        const OPCIONES_ENTIDADES = ["Min. de Salud", "Min. de Educación", "Min. de Medio Ambiente", "Min. de Planificación", "Viceministerio de Defensa Civil"];
         const CLASIFICACIONES = ["Ayuda Humanitaria", "Donación", "Préstamo", "Asistencia Técnica", "Cooperación Delegada"];
 
-        // --- INICIALIZACIÓN ---
         window.onload = function() {
-            // Añadir el primer proyecto por defecto
             addProject();
-            
-            // Navegar a home por defecto
             navigateTo('home');
         };
 
         // --- NAVEGACIÓN ---
         function navigateTo(viewId) {
-            // Ocultar todas las vistas
             document.querySelectorAll('.view-section').forEach(el => el.classList.remove('active'));
-            // Mostrar la seleccionada
             document.getElementById('view-' + viewId).classList.add('active');
             
-            // Actualizar botones del nav
             document.querySelectorAll('.nav-btn').forEach(btn => {
                 if(btn.dataset.target === viewId) {
-                    btn.classList.add('text-green-700', 'bg-slate-50');
+                    btn.classList.add('text-green-800', 'bg-green-50');
                     btn.classList.remove('text-slate-600');
                 } else {
-                    btn.classList.remove('text-green-700', 'bg-slate-50');
+                    btn.classList.remove('text-green-800', 'bg-green-50');
                     btn.classList.add('text-slate-600');
                 }
             });
 
-            // Acciones específicas por vista
             if (viewId === 'payload') {
                 document.getElementById('json-output').textContent = JSON.stringify(formData, null, 2);
             }
@@ -630,7 +623,7 @@
                 return;
             }
             formData.proyectos = formData.proyectos.filter(p => p.id !== id);
-            delete formData.monitoreo[id]; // Limpiar info de monitoreo huerfana
+            delete formData.monitoreo[id];
             renderProjects();
             updateMonitoreoSelect();
         }
@@ -645,13 +638,9 @@
                 project[field] = value;
             }
             
-            // Si cambia el nombre, actualizar el select de monitoreo
-            if (field === 'nombre') {
-                updateMonitoreoSelect();
-            }
+            if (field === 'nombre') updateMonitoreoSelect();
         }
 
-        // Sistema de Tags (Multi-select dinámico)
         function addTag(projectId, field, inputId) {
             const inputEl = document.getElementById(inputId);
             const value = inputEl.value.trim();
@@ -662,7 +651,7 @@
                 project[field].push(value);
                 renderTags(projectId, field);
             }
-            inputEl.value = ''; // Limpiar input
+            inputEl.value = '';
         }
 
         function removeTag(projectId, field, tagValue) {
@@ -686,7 +675,6 @@
             `).join('');
         }
 
-        // Renderizado del HTML del listado de proyectos
         function renderProjects() {
             const container = document.getElementById('projects-container');
             container.innerHTML = formData.proyectos.map((proj, index) => `
@@ -701,30 +689,27 @@
                         <!-- 2.1 Nombre -->
                         <div class="col-span-1 md:col-span-2">
                             <label class="block text-sm font-medium text-slate-700 mb-1">2.1. Nombre del Proyecto/Actividad <span class="text-red-500">*</span></label>
-                            <input type="text" value="${proj.nombre}" onchange="updateProjectData('${proj.id}', 'nombre', this.value)" required class="w-full rounded-lg border border-slate-300 px-4 py-2.5 text-sm focus:border-green-600 outline-none">
+                            <input type="text" value="${proj.nombre}" onchange="updateProjectData('${proj.id}', 'nombre', this.value)" required class="w-full rounded-lg border border-slate-300 px-4 py-2.5 text-sm focus:border-green-700 outline-none">
                         </div>
 
                         <!-- 2.2 Resultado -->
                         <div>
                             <label class="block text-sm font-medium text-slate-700 mb-1">2.2. Resultado del Proyecto</label>
-                            <textarea onchange="updateProjectData('${proj.id}', 'resultado', this.value)" rows="2" class="w-full rounded-lg border border-slate-300 px-4 py-2 text-sm focus:border-green-600 outline-none">${proj.resultado}</textarea>
+                            <textarea onchange="updateProjectData('${proj.id}', 'resultado', this.value)" rows="2" class="w-full rounded-lg border border-slate-300 px-4 py-2 text-sm focus:border-green-700 outline-none resize-y">${proj.resultado}</textarea>
                         </div>
 
                         <!-- 2.3 Indicadores -->
                         <div>
                             <label class="block text-sm font-medium text-slate-700 mb-1">2.3. Indicadores del Proyecto</label>
-                            <textarea onchange="updateProjectData('${proj.id}', 'indicadores', this.value)" rows="2" class="w-full rounded-lg border border-slate-300 px-4 py-2 text-sm focus:border-green-600 outline-none">${proj.indicadores}</textarea>
+                            <textarea onchange="updateProjectData('${proj.id}', 'indicadores', this.value)" rows="2" class="w-full rounded-lg border border-slate-300 px-4 py-2 text-sm focus:border-green-700 outline-none resize-y">${proj.indicadores}</textarea>
                         </div>
 
-                        <!-- 2.4 Entidades (Multi-select) -->
+                        <!-- 2.4 Entidades -->
                         <div class="col-span-1 md:col-span-2">
                             <label class="block text-sm font-medium text-slate-700 mb-1">2.4. Entidades del Órgano Ejecutivo contraparte</label>
                             <div id="tags-entidadesContraparte-${proj.id}" class="mb-2 min-h-[28px]"></div>
                             <div class="flex gap-2">
-                                <input type="text" id="input-ent-${proj.id}" list="list-ent-${proj.id}" placeholder="Escriba o seleccione y presione Añadir..." class="flex-grow rounded-lg border border-slate-300 px-4 py-2 text-sm focus:border-green-600 outline-none" onkeypress="if(event.key === 'Enter'){ event.preventDefault(); addTag('${proj.id}', 'entidadesContraparte', 'input-ent-${proj.id}'); }">
-                                <datalist id="list-ent-${proj.id}">
-                                    ${OPCIONES_ENTIDADES.map(o => `<option value="${o}">`).join('')}
-                                </datalist>
+                                <input type="text" id="input-ent-${proj.id}" placeholder="Escriba el nombre y presione Añadir..." class="flex-grow rounded-lg border border-slate-300 px-4 py-2 text-sm focus:border-green-700 outline-none" onkeypress="if(event.key === 'Enter'){ event.preventDefault(); addTag('${proj.id}', 'entidadesContraparte', 'input-ent-${proj.id}'); }">
                                 <button type="button" onclick="addTag('${proj.id}', 'entidadesContraparte', 'input-ent-${proj.id}')" class="px-4 py-2 bg-slate-100 border border-slate-300 rounded-lg text-sm font-medium hover:bg-slate-200">Añadir</button>
                             </div>
                         </div>
@@ -737,20 +722,20 @@
                                     <option value="Bs" ${proj.presupuesto.moneda === 'Bs' ? 'selected' : ''}>Bs.</option>
                                     <option value="USD" ${proj.presupuesto.moneda === 'USD' ? 'selected' : ''}>USD ($)</option>
                                 </select>
-                                <input type="number" step="0.01" value="${proj.presupuesto.monto}" onchange="updateProjectData('${proj.id}', 'presupuesto', this.value, 'monto')" placeholder="Monto" class="w-full rounded-r-lg border border-slate-300 px-4 py-2 text-sm focus:border-green-600 outline-none">
+                                <input type="number" step="0.01" value="${proj.presupuesto.monto}" onchange="updateProjectData('${proj.id}', 'presupuesto', this.value, 'monto')" placeholder="Monto" class="w-full rounded-r-lg border border-slate-300 px-4 py-2 text-sm focus:border-green-700 outline-none">
                             </div>
                         </div>
 
                         <!-- 2.6 Detalle Recurso -->
                         <div>
-                            <label class="block text-sm font-medium text-slate-700 mb-1">2.6. Detalle Recurso (Especie/Monetario)</label>
-                            <input type="text" value="${proj.detalleRecurso}" onchange="updateProjectData('${proj.id}', 'detalleRecurso', this.value)" placeholder="Ej. 100% Monetario" class="w-full rounded-lg border border-slate-300 px-4 py-2 text-sm focus:border-green-600 outline-none">
+                            <label class="block text-sm font-medium text-slate-700 mb-1">2.6. Detalle del Recurso (Especie/Monetario)</label>
+                            <input type="text" value="${proj.detalleRecurso}" onchange="updateProjectData('${proj.id}', 'detalleRecurso', this.value)" placeholder="Ej. 100% Monetario, Equipamiento..." class="w-full rounded-lg border border-slate-300 px-4 py-2 text-sm focus:border-green-700 outline-none">
                         </div>
 
                         <!-- 2.7 Clasificación -->
                         <div>
                             <label class="block text-sm font-medium text-slate-700 mb-1">2.7. Clasificación del Proyecto</label>
-                            <select onchange="updateProjectData('${proj.id}', 'clasificacion', this.value)" class="w-full rounded-lg border border-slate-300 px-4 py-2.5 text-sm focus:border-green-600 outline-none bg-white">
+                            <select onchange="updateProjectData('${proj.id}', 'clasificacion', this.value)" class="w-full rounded-lg border border-slate-300 px-4 py-2.5 text-sm focus:border-green-700 outline-none bg-white">
                                 <option value="">Seleccione...</option>
                                 ${CLASIFICACIONES.map(c => `<option value="${c}" ${proj.clasificacion === c ? 'selected' : ''}>${c}</option>`).join('')}
                             </select>
@@ -759,15 +744,15 @@
                         <!-- 2.9 Cobertura -->
                         <div>
                             <label class="block text-sm font-medium text-slate-700 mb-1">2.9. Cobertura Geográfica</label>
-                            <input type="text" value="${proj.cobertura}" onchange="updateProjectData('${proj.id}', 'cobertura', this.value)" placeholder="Ej. Nacional, La Paz..." class="w-full rounded-lg border border-slate-300 px-4 py-2 text-sm focus:border-green-600 outline-none">
+                            <input type="text" value="${proj.cobertura}" onchange="updateProjectData('${proj.id}', 'cobertura', this.value)" placeholder="Ej. Nivel Nacional, Santa Cruz..." class="w-full rounded-lg border border-slate-300 px-4 py-2 text-sm focus:border-green-700 outline-none">
                         </div>
 
                         <!-- 2.8 Socios (Multi-select) -->
                         <div class="col-span-1 md:col-span-2">
-                            <label class="block text-sm font-medium text-slate-700 mb-1">2.8. Socios Co-ejecutores o Donantes</label>
+                            <label class="block text-sm font-medium text-slate-700 mb-1">2.8. Socios Co-ejecutores o Donantes involucrados <span class="text-slate-400 font-normal">(Si Corresponde)</span></label>
                             <div id="tags-socios-${proj.id}" class="mb-2 min-h-[28px]"></div>
                             <div class="flex gap-2">
-                                <input type="text" id="input-soc-${proj.id}" list="list-soc-${proj.id}" placeholder="Añadir socio..." class="flex-grow rounded-lg border border-slate-300 px-4 py-2 text-sm focus:border-green-600 outline-none" onkeypress="if(event.key === 'Enter'){ event.preventDefault(); addTag('${proj.id}', 'socios', 'input-soc-${proj.id}'); }">
+                                <input type="text" id="input-soc-${proj.id}" list="list-soc-${proj.id}" placeholder="Seleccione o escriba..." class="flex-grow rounded-lg border border-slate-300 px-4 py-2 text-sm focus:border-green-700 outline-none" onkeypress="if(event.key === 'Enter'){ event.preventDefault(); addTag('${proj.id}', 'socios', 'input-soc-${proj.id}'); }">
                                 <datalist id="list-soc-${proj.id}">
                                     ${OPCIONES_SOCIOS.map(o => `<option value="${o}">`).join('')}
                                 </datalist>
@@ -777,20 +762,19 @@
 
                         <!-- 2.10 Poblacion -->
                         <div>
-                            <label class="block text-sm font-medium text-slate-700 mb-1">2.10. Población Beneficiada (N°)</label>
-                            <input type="number" value="${proj.poblacion}" onchange="updateProjectData('${proj.id}', 'poblacion', this.value)" class="w-full rounded-lg border border-slate-300 px-4 py-2 text-sm focus:border-green-600 outline-none">
+                            <label class="block text-sm font-medium text-slate-700 mb-1">2.10. Población beneficiada (N°)</label>
+                            <input type="number" value="${proj.poblacion}" onchange="updateProjectData('${proj.id}', 'poblacion', this.value)" placeholder="Personas o Familias" class="w-full rounded-lg border border-slate-300 px-4 py-2 text-sm focus:border-green-700 outline-none">
                         </div>
 
                         <!-- 2.11 Adjuntos -->
                         <div>
-                            <label class="block text-sm font-medium text-slate-700 mb-1">2.11. Adjuntos (URL Convenio)</label>
-                            <input type="url" value="${proj.adjuntos}" onchange="updateProjectData('${proj.id}', 'adjuntos', this.value)" placeholder="https://..." class="w-full rounded-lg border border-slate-300 px-4 py-2 text-sm focus:border-green-600 outline-none">
+                            <label class="block text-sm font-medium text-slate-700 mb-1">2.11. Adjuntos (Documentos o links)</label>
+                            <input type="text" value="${proj.adjuntos}" onchange="updateProjectData('${proj.id}', 'adjuntos', this.value)" placeholder="Pega la URL del convenio..." class="w-full rounded-lg border border-slate-300 px-4 py-2 text-sm focus:border-green-700 outline-none">
                         </div>
                     </div>
                 </div>
             `).join('');
 
-            // Restaurar tags visuales tras render
             formData.proyectos.forEach(p => {
                 renderTags(p.id, 'entidadesContraparte');
                 renderTags(p.id, 'socios');
@@ -800,8 +784,6 @@
         // --- MANEJO DE DATOS: SECCIÓN III (Monitoreo) ---
         function updateMonitoreoSelect() {
             const selectEl = document.getElementById('monitoreo-project-select');
-            
-            // Guardar selección actual si existe
             const prevSelected = selectEl.value;
 
             if (formData.proyectos.length === 0) {
@@ -814,7 +796,6 @@
                 `<option value="${p.id}">Ficha #${i+1}: ${p.nombre || '(Sin Nombre)'}</option>`
             ).join('');
 
-            // Restaurar selección o seleccionar el primero
             if (prevSelected && formData.proyectos.find(p => p.id === prevSelected)) {
                 selectEl.value = prevSelected;
             } else {
@@ -827,18 +808,14 @@
 
         function switchMonitoreoProject(projectId) {
             currentMonitoreoProject = projectId;
-            
-            // Cargar datos si existen
             const data = formData.monitoreo[projectId] || {
                 estadoActual: '', anioInicio: '', anioFin: '', documentos: '', area: ''
             };
 
-            // Radios
             document.querySelectorAll('input[name="estadoActual"]').forEach(radio => {
                 radio.checked = (radio.value === data.estadoActual);
             });
 
-            // Textos
             document.getElementById('monitoreo-inicio').value = data.anioInicio || '';
             document.getElementById('monitoreo-fin').value = data.anioFin || '';
             document.getElementById('monitoreo-docs').value = data.documentos || '';
@@ -847,7 +824,6 @@
 
         function updateMonitoreo(field, value) {
             if (!currentMonitoreoProject) return;
-            
             if (!formData.monitoreo[currentMonitoreoProject]) {
                 formData.monitoreo[currentMonitoreoProject] = {};
             }
@@ -860,33 +836,23 @@
             navigator.clipboard.writeText(text).then(() => {
                 alert("JSON copiado al portapapeles");
             }).catch(err => {
-                // Fallback para iframes
                 const textArea = document.createElement("textarea");
                 textArea.value = text;
                 document.body.appendChild(textArea);
                 textArea.select();
-                try {
-                    document.execCommand('copy');
-                    alert("JSON copiado al portapapeles");
-                } catch (e) {
-                    console.error('Error fallback copy', e);
-                }
+                try { document.execCommand('copy'); alert("JSON copiado al portapapeles"); } 
+                catch (e) { console.error('Error', e); }
                 document.body.removeChild(textArea);
             });
         }
 
-        // --- DASHBOARD LOGIC ---
         function updateDashboard() {
-            // 1. Calcular KPIs
             const totalProyectos = formData.proyectos.length;
-            let totalBs = 0;
-            let totalUsd = 0;
-            let totalPop = 0;
-
+            let totalBs = 0, totalUsd = 0, totalPop = 0;
             const conteoClasificacion = {};
             const conteoEstado = {
                 'En ejecución continua / Activo': 0,
-                'En implementación inicial': 0,
+                'En implementación inicial / En proceso': 0,
                 'Implementado / En expansión': 0,
                 'Aprobado': 0,
                 'Sin asignar': 0
@@ -896,37 +862,29 @@
             tbody.innerHTML = '';
 
             formData.proyectos.forEach(p => {
-                // Presupuestos
                 const monto = parseFloat(p.presupuesto.monto) || 0;
                 if (p.presupuesto.moneda === 'Bs') totalBs += monto;
                 if (p.presupuesto.moneda === 'USD') totalUsd += monto;
-
-                // Poblacion
                 totalPop += parseInt(p.poblacion) || 0;
 
-                // Gráfico Clasificación
                 const clasif = p.clasificacion || 'Sin clasificar';
                 conteoClasificacion[clasif] = (conteoClasificacion[clasif] || 0) + 1;
 
-                // Gráfico Estado (viene de monitoreo)
                 const moni = formData.monitoreo[p.id];
                 const estado = moni && moni.estadoActual ? moni.estadoActual : 'Sin asignar';
-                if(conteoEstado[estado] !== undefined) { conteoEstado[estado]++; } 
-                else { conteoEstado['Sin asignar']++; }
+                if(conteoEstado[estado] !== undefined) conteoEstado[estado]++; 
+                else conteoEstado['Sin asignar']++;
 
-                // Tabla
                 tbody.innerHTML += `
                     <tr>
                         <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-slate-900">${p.nombre || 'Sin nombre'}</td>
                         <td class="px-6 py-4 whitespace-nowrap text-sm text-slate-500">${formData.organismo.nombre || 'N/A'}</td>
                         <td class="px-6 py-4 whitespace-nowrap text-sm text-slate-500">${monto.toLocaleString()} ${p.presupuesto.moneda}</td>
                         <td class="px-6 py-4 whitespace-nowrap text-sm text-slate-500">
-                            <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-slate-100 text-slate-800">
-                                ${estado}
-                            </span>
+                            <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-slate-100 text-slate-800">${estado}</span>
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap text-sm text-center">
-                            <button onclick="openSummaryModal('${p.id}')" class="text-green-600 hover:text-green-800 bg-green-50 hover:bg-green-100 border border-green-100 px-3 py-1.5 rounded-lg transition text-xs font-bold" title="Ver Resumen Completo">
+                            <button onclick="openSummaryModal('${p.id}')" class="text-green-700 hover:text-green-900 bg-green-50 hover:bg-green-100 border border-green-200 px-3 py-1.5 rounded-lg transition text-xs font-bold" title="Ver Resumen">
                                 <i class="fa-solid fa-eye mr-1"></i> Detalle
                             </button>
                         </td>
@@ -934,22 +892,18 @@
                 `;
             });
 
-            // Update DOM
             document.getElementById('dash-total-proj').innerText = totalProyectos;
             document.getElementById('dash-total-bs').innerText = totalBs.toLocaleString();
             document.getElementById('dash-total-usd').innerText = totalUsd.toLocaleString();
             document.getElementById('dash-total-pop').innerText = totalPop.toLocaleString();
 
-            // 2. Renderizar Gráficos
             renderCharts(conteoClasificacion, conteoEstado);
         }
 
         function renderCharts(dataClasif, dataEstado) {
-            // Destruir instancias previas si existen para evitar bug de hover
             if (chartClasificacionInstance) chartClasificacionInstance.destroy();
             if (chartEstadoInstance) chartEstadoInstance.destroy();
 
-            // Configurar Chart.js - Clasificación (Doughnut)
             const ctxClasif = document.getElementById('chartClasificacion').getContext('2d');
             chartClasificacionInstance = new Chart(ctxClasif, {
                 type: 'doughnut',
@@ -957,20 +911,13 @@
                     labels: Object.keys(dataClasif),
                     datasets: [{
                         data: Object.values(dataClasif),
-                        backgroundColor: ['#15803d', '#10b981', '#8b5cf6', '#f59e0b', '#64748b'], // Modificado a verde oscuro
+                        backgroundColor: ['#166534', '#15803d', '#16a34a', '#22c55e', '#4ade80', '#64748b'], // Verdes oscuros
                         borderWidth: 0
                     }]
                 },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        legend: { position: 'right' }
-                    }
-                }
+                options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'right' } } }
             });
 
-            // Configurar Chart.js - Estado (Bar)
             const ctxEstado = document.getElementById('chartEstado').getContext('2d');
             chartEstadoInstance = new Chart(ctxEstado, {
                 type: 'bar',
@@ -979,49 +926,28 @@
                     datasets: [{
                         label: 'Proyectos',
                         data: Object.values(dataEstado),
-                        backgroundColor: '#10b981',
+                        backgroundColor: '#15803d',
                         borderRadius: 4
                     }]
                 },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    scales: {
-                        y: { beginAtZero: true, ticks: { stepSize: 1 } }
-                    },
-                    plugins: {
-                        legend: { display: false }
-                    }
-                }
+                options: { responsive: true, maintainAspectRatio: false, scales: { y: { beginAtZero: true, ticks: { stepSize: 1 } } }, plugins: { legend: { display: false } } }
             });
         }
 
-        // --- LÓGICA DEL MODAL DE RESUMEN DETALLADO ---
         function openSummaryModal(projectId) {
             const selectEl = document.getElementById('modal-project-selector');
-            
-            if (formData.proyectos.length === 0) {
-                alert("No hay proyectos registrados aún.");
-                return;
-            }
+            if (formData.proyectos.length === 0) { alert("No hay proyectos registrados."); return; }
 
-            // Llenar el selector
             selectEl.innerHTML = formData.proyectos.map((p, i) => 
                 `<option value="${p.id}">#${i+1} - ${p.nombre || '(Sin Nombre)'}</option>`
             ).join('');
+            selectEl.value = projectId || formData.proyectos[0].id;
             
-            if(projectId) {
-                selectEl.value = projectId;
-            } else {
-                selectEl.value = formData.proyectos[0].id;
-            }
-
             renderProjectSummary(selectEl.value);
             
             const modal = document.getElementById('summary-modal');
             const modalContent = document.getElementById('summary-modal-content');
             modal.classList.remove('hidden');
-            // Timeout para permitir la transición CSS
             setTimeout(() => {
                 modal.classList.remove('opacity-0');
                 modalContent.classList.remove('scale-95');
@@ -1033,9 +959,7 @@
             const modalContent = document.getElementById('summary-modal-content');
             modal.classList.add('opacity-0');
             modalContent.classList.add('scale-95');
-            setTimeout(() => {
-                modal.classList.add('hidden');
-            }, 300);
+            setTimeout(() => { modal.classList.add('hidden'); }, 300);
         }
 
         function renderProjectSummary(projectId) {
@@ -1047,69 +971,68 @@
             const content = document.getElementById('summary-content');
             content.innerHTML = `
                 <div class="space-y-6">
-                    <!-- Sección I: Organismo -->
                     <div class="border border-slate-200 rounded-xl overflow-hidden shadow-sm">
-                        <div class="bg-green-50 px-4 py-2.5 font-bold text-green-800 border-b border-slate-200 flex items-center gap-2">
-                            <i class="fa-solid fa-building-ngo text-green-600"></i> I. Organismo Financiador
+                        <div class="bg-green-50 px-4 py-2.5 font-bold text-green-900 border-b border-slate-200 flex items-center gap-2">
+                            <i class="fa-solid fa-building-ngo text-green-700"></i> I. Información del Organismo Financiador
                         </div>
                         <div class="p-5 grid grid-cols-1 md:grid-cols-2 gap-5 text-sm">
-                            <div><span class="text-slate-500 block text-xs uppercase tracking-wider mb-1">Tipo de Organismo</span> <span class="font-semibold text-slate-800">${org.tipo || 'No especificado'}</span></div>
-                            <div><span class="text-slate-500 block text-xs uppercase tracking-wider mb-1">Nombre del Organismo</span> <span class="font-semibold text-slate-800">${org.nombre || 'No especificado'}</span></div>
-                            <div class="md:col-span-2"><span class="text-slate-500 block text-xs uppercase tracking-wider mb-1">Nombre del Proyecto País</span> <span class="font-semibold text-slate-800 text-base">${org.nombreProyectoPais || 'No especificado'}</span></div>
-                            <div class="bg-slate-50 p-3 rounded-lg border border-slate-100"><span class="text-slate-500 block text-xs uppercase tracking-wider mb-1"><i class="fa-solid fa-user-tie mr-1"></i> Contacto Oficial</span> <span class="font-medium text-slate-800">${org.contactoOficial.nombre || '-'}</span> <div class="text-slate-500 mt-1">${org.contactoOficial.telefono ? `<i class="fa-solid fa-phone text-xs w-4"></i> ${org.contactoOficial.telefono}` : ''} ${org.contactoOficial.otros ? `<br><i class="fa-solid fa-envelope text-xs w-4"></i> ${org.contactoOficial.otros}` : ''}</div></div>
-                            <div class="bg-slate-50 p-3 rounded-lg border border-slate-100"><span class="text-slate-500 block text-xs uppercase tracking-wider mb-1"><i class="fa-solid fa-users-gear mr-1"></i> Contacto Operativo</span> <span class="font-medium text-slate-800">${org.contactoOperativo.nombre || '-'}</span> <div class="text-slate-500 mt-1">${org.contactoOperativo.telefono ? `<i class="fa-solid fa-phone text-xs w-4"></i> ${org.contactoOperativo.telefono}` : ''} ${org.contactoOperativo.otros ? `<br><i class="fa-solid fa-envelope text-xs w-4"></i> ${org.contactoOperativo.otros}` : ''}</div></div>
+                            <div><span class="text-slate-500 block text-xs uppercase tracking-wider mb-1">1.1. Tipo de Organismo</span> <span class="font-semibold text-slate-800">${org.tipo || 'No especificado'}</span></div>
+                            <div><span class="text-slate-500 block text-xs uppercase tracking-wider mb-1">1.2. Nombre del Organismo</span> <span class="font-semibold text-slate-800">${org.nombre || 'No especificado'}</span></div>
+                            
+                            <div class="bg-slate-50 p-3 rounded-lg border border-slate-100"><span class="text-slate-500 block text-xs uppercase tracking-wider mb-1"><i class="fa-solid fa-user-tie mr-1"></i> 1.3. Contacto Oficial</span> <span class="font-medium text-slate-800">${org.contactoOficial.nombre || '-'}</span> <div class="text-slate-500 mt-1">${org.contactoOficial.telefono ? `<i class="fa-solid fa-phone text-xs w-4"></i> ${org.contactoOficial.telefono}` : ''} ${org.contactoOficial.otros ? `<br><i class="fa-solid fa-envelope text-xs w-4"></i> ${org.contactoOficial.otros}` : ''}</div></div>
+                            <div class="bg-slate-50 p-3 rounded-lg border border-slate-100"><span class="text-slate-500 block text-xs uppercase tracking-wider mb-1"><i class="fa-solid fa-users-gear mr-1"></i> 1.4. Contacto Operativo</span> <span class="font-medium text-slate-800">${org.contactoOperativo.nombre || '-'}</span> <div class="text-slate-500 mt-1">${org.contactoOperativo.telefono ? `<i class="fa-solid fa-phone text-xs w-4"></i> ${org.contactoOperativo.telefono}` : ''} ${org.contactoOperativo.otros ? `<br><i class="fa-solid fa-envelope text-xs w-4"></i> ${org.contactoOperativo.otros}` : ''}</div></div>
+                            
+                            <div class="md:col-span-2"><span class="text-slate-500 block text-xs uppercase tracking-wider mb-1">1.5. Nombre del Proyecto País</span> <span class="font-semibold text-slate-800 text-base">${org.nombreProyectoPais || 'No especificado'}</span></div>
+                            <div class="md:col-span-2"><span class="text-slate-500 block text-xs uppercase tracking-wider mb-1">1.6. Objetivo del Proyecto País</span> <p class="font-medium text-slate-800 whitespace-pre-wrap">${org.objetivoProyectoPais || 'No especificado'}</p></div>
                         </div>
                     </div>
 
-                    <!-- Sección II: Proyecto -->
                     <div class="border border-slate-200 rounded-xl overflow-hidden shadow-sm">
-                        <div class="bg-green-700 px-4 py-2.5 font-bold text-white border-b border-green-800 flex items-center gap-2">
-                            <i class="fa-solid fa-diagram-project text-green-200"></i> II. Datos del Proyecto / Actividad
+                        <div class="bg-green-800 px-4 py-2.5 font-bold text-white border-b border-green-900 flex items-center gap-2">
+                            <i class="fa-solid fa-diagram-project text-green-200"></i> II. Registro de Actividades y Proyectos
                         </div>
                         <div class="p-5 grid grid-cols-1 md:grid-cols-2 gap-5 text-sm">
-                            <div class="md:col-span-2"><span class="text-slate-500 block text-xs uppercase tracking-wider mb-1">Nombre de la Ficha/Actividad</span> <span class="font-bold text-lg text-slate-900">${project.nombre || 'Sin nombre'}</span></div>
+                            <div class="md:col-span-2"><span class="text-slate-500 block text-xs uppercase tracking-wider mb-1">2.1. Nombre del Proyecto/Actividad</span> <span class="font-bold text-lg text-slate-900">${project.nombre || 'Sin nombre'}</span></div>
+                            <div class="md:col-span-2"><span class="text-slate-500 block text-xs uppercase tracking-wider mb-1">2.2. Resultado del Proyecto</span> <p class="font-medium text-slate-800 whitespace-pre-wrap">${project.resultado || 'No especificado'}</p></div>
+                            <div class="md:col-span-2"><span class="text-slate-500 block text-xs uppercase tracking-wider mb-1">2.3. Indicadores del Proyecto</span> <p class="font-medium text-slate-800 whitespace-pre-wrap">${project.indicadores || 'No especificado'}</p></div>
                             
-                            <div><span class="text-slate-500 block text-xs uppercase tracking-wider mb-1">Clasificación</span> <span class="font-medium bg-slate-100 px-2 py-1 rounded text-slate-700">${project.clasificacion || 'No definida'}</span></div>
-                            <div>
-                                <span class="text-slate-500 block text-xs uppercase tracking-wider mb-1">Presupuesto Asignado</span> 
-                                <span class="font-bold text-green-700 text-lg">${project.presupuesto.monto ? Number(project.presupuesto.monto).toLocaleString() : '0.00'} <span class="text-sm font-medium">${project.presupuesto.moneda}</span></span>
-                            </div>
+                            <div class="md:col-span-2"><span class="text-slate-500 block text-xs uppercase tracking-wider mb-1">2.4. Entidades del Órgano Ejecutivo contraparte</span> <div class="flex flex-wrap gap-1 mt-1">${project.entidadesContraparte.length > 0 ? project.entidadesContraparte.map(e => `<span class="bg-blue-50 text-blue-700 border border-blue-200 px-2 py-0.5 rounded text-xs">${e}</span>`).join('') : '<span class="text-slate-400">Ninguna</span>'}</div></div>
                             
-                            <div class="md:col-span-2"><span class="text-slate-500 block text-xs uppercase tracking-wider mb-1">Resultado Esperado</span> <p class="font-medium text-slate-800 whitespace-pre-wrap">${project.resultado || 'No especificado'}</p></div>
-                            <div class="md:col-span-2"><span class="text-slate-500 block text-xs uppercase tracking-wider mb-1">Indicadores</span> <p class="font-medium text-slate-800 whitespace-pre-wrap">${project.indicadores || 'No especificado'}</p></div>
+                            <div><span class="text-slate-500 block text-xs uppercase tracking-wider mb-1">2.5. Presupuesto Asignado</span> <span class="font-bold text-green-700 text-lg">${project.presupuesto.monto ? Number(project.presupuesto.monto).toLocaleString() : '0.00'} <span class="text-sm font-medium">${project.presupuesto.moneda}</span></span></div>
+                            <div><span class="text-slate-500 block text-xs uppercase tracking-wider mb-1">2.6. Detalle del Recurso</span> <span class="font-medium text-slate-800">${project.detalleRecurso || 'No especificado'}</span></div>
+                            <div><span class="text-slate-500 block text-xs uppercase tracking-wider mb-1">2.7. Clasificación del Proyecto</span> <span class="font-medium bg-slate-100 px-2 py-1 rounded text-slate-700">${project.clasificacion || 'No definida'}</span></div>
+                            <div><span class="text-slate-500 block text-xs uppercase tracking-wider mb-1">2.9. Cobertura Geográfica</span> <span class="font-medium text-slate-800"><i class="fa-solid fa-location-dot text-slate-400 mr-1"></i> ${project.cobertura || 'No especificada'}</span></div>
                             
-                            <div><span class="text-slate-500 block text-xs uppercase tracking-wider mb-1">Entidades Contraparte</span> <div class="flex flex-wrap gap-1 mt-1">${project.entidadesContraparte.length > 0 ? project.entidadesContraparte.map(e => `<span class="bg-blue-50 text-blue-700 border border-blue-200 px-2 py-0.5 rounded text-xs">${e}</span>`).join('') : '<span class="text-slate-400">Ninguna</span>'}</div></div>
-                            <div><span class="text-slate-500 block text-xs uppercase tracking-wider mb-1">Socios / Donantes</span> <div class="flex flex-wrap gap-1 mt-1">${project.socios.length > 0 ? project.socios.map(s => `<span class="bg-purple-50 text-purple-700 border border-purple-200 px-2 py-0.5 rounded text-xs">${s}</span>`).join('') : '<span class="text-slate-400">Ninguno</span>'}</div></div>
+                            <div class="md:col-span-2"><span class="text-slate-500 block text-xs uppercase tracking-wider mb-1">2.8. Socios Co-ejecutores o Donantes</span> <div class="flex flex-wrap gap-1 mt-1">${project.socios.length > 0 ? project.socios.map(s => `<span class="bg-purple-50 text-purple-700 border border-purple-200 px-2 py-0.5 rounded text-xs">${s}</span>`).join('') : '<span class="text-slate-400">Ninguno</span>'}</div></div>
                             
-                            <div><span class="text-slate-500 block text-xs uppercase tracking-wider mb-1">Población Beneficiada</span> <span class="font-semibold text-slate-800"><i class="fa-solid fa-users text-slate-400"></i> ${project.poblacion ? Number(project.poblacion).toLocaleString() : '0'} personas/familias</span></div>
-                            <div><span class="text-slate-500 block text-xs uppercase tracking-wider mb-1">Cobertura Geográfica</span> <span class="font-medium text-slate-800"><i class="fa-solid fa-location-dot text-slate-400 mr-1"></i> ${project.cobertura || 'No especificada'}</span></div>
+                            <div><span class="text-slate-500 block text-xs uppercase tracking-wider mb-1">2.10. Población Beneficiada</span> <span class="font-semibold text-slate-800"><i class="fa-solid fa-users text-slate-400"></i> ${project.poblacion ? Number(project.poblacion).toLocaleString() : '0'} personas/familias</span></div>
+                            <div class="truncate"><span class="text-slate-500 block text-xs uppercase tracking-wider mb-1">2.11. Adjuntos (Convenio)</span> ${project.adjuntos ? `<a href="${project.adjuntos}" target="_blank" class="text-blue-600 hover:underline"><i class="fa-solid fa-link"></i> Abrir Enlace</a>` : '<span class="text-slate-400">No hay adjuntos</span>'}</div>
                         </div>
                     </div>
 
-                    <!-- Sección III: Monitoreo -->
                     <div class="border border-slate-200 rounded-xl overflow-hidden shadow-sm">
-                        <div class="bg-emerald-50 px-4 py-2.5 font-bold text-emerald-800 border-b border-slate-200 flex items-center gap-2">
-                            <i class="fa-solid fa-satellite-dish text-emerald-600"></i> III. Seguimiento y Monitoreo
+                        <div class="bg-emerald-50 px-4 py-2.5 font-bold text-emerald-900 border-b border-slate-200 flex items-center gap-2">
+                            <i class="fa-solid fa-satellite-dish text-emerald-700"></i> III. Seguimiento y Monitoreo al Proyecto
                         </div>
                         <div class="p-5 grid grid-cols-1 md:grid-cols-2 gap-5 text-sm">
                             <div>
-                                <span class="text-slate-500 block text-xs uppercase tracking-wider mb-2">Estado Actual</span> 
+                                <span class="text-slate-500 block text-xs uppercase tracking-wider mb-2">3.1. Estado Actual</span> 
                                 <span class="inline-flex items-center px-3 py-1.5 rounded-full text-xs font-bold bg-emerald-100 text-emerald-800 border border-emerald-200 shadow-sm">
                                     <i class="fa-solid fa-circle-dot mr-1.5 text-[10px]"></i> ${moni.estadoActual || 'Sin Estado Asignado'}
                                 </span>
                             </div>
-                            <div><span class="text-slate-500 block text-xs uppercase tracking-wider mb-1">Gestión (Período)</span> <span class="font-semibold text-slate-800 bg-slate-100 px-2 py-1 rounded"><i class="fa-solid fa-calendar-days text-slate-400 mr-1"></i> ${moni.anioInicio || '?'} - ${moni.anioFin || '?'}</span></div>
-                            
-                            <div class="md:col-span-2"><span class="text-slate-500 block text-xs uppercase tracking-wider mb-1">Área de Intervención Específica</span> <p class="font-medium text-slate-800 whitespace-pre-wrap">${moni.area || 'No especificada'}</p></div>
+                            <div><span class="text-slate-500 block text-xs uppercase tracking-wider mb-1">3.2. Gestión / Período del Proyecto</span> <span class="font-semibold text-slate-800 bg-slate-100 px-2 py-1 rounded"><i class="fa-solid fa-calendar-days text-slate-400 mr-1"></i> ${moni.anioInicio || '?'} - ${moni.anioFin || '?'}</span></div>
                             
                             <div class="md:col-span-2 bg-slate-50 p-4 rounded-lg border border-slate-200">
-                                <span class="text-slate-500 block text-xs uppercase tracking-wider mb-2">Documentos Adjuntos de Soporte</span> 
+                                <span class="text-slate-500 block text-xs uppercase tracking-wider mb-2">3.3. Documentos de Soporte Adjuntos</span> 
                                 ${moni.documentos ? `
                                 <a href="${moni.documentos}" target="_blank" class="inline-flex items-center gap-2 px-4 py-2 bg-white border border-slate-300 rounded-lg text-blue-600 hover:text-blue-800 hover:bg-blue-50 transition shadow-sm font-medium">
                                     <i class="fa-solid fa-arrow-up-right-from-square text-blue-500"></i> Abrir Enlace de Documentos
                                 </a>
                                 ` : '<span class="text-slate-400 italic">No se vincularon enlaces a documentos de soporte.</span>'}
                             </div>
+
+                            <div class="md:col-span-2"><span class="text-slate-500 block text-xs uppercase tracking-wider mb-1">3.4. Área Geográfica & Cobertura Territorial</span> <p class="font-medium text-slate-800 whitespace-pre-wrap">${moni.area || 'No especificada'}</p></div>
                         </div>
                     </div>
                 </div>
